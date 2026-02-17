@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="View on SloughApp" />
+  <meta property="og:description" content="Open this post in SloughApp" />
+  <title>SloughApp - View Post</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #121212; color: #fff; text-align: center; }
+    .container { padding: 20px; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    p { color: #aaa; }
+    a { color: #60a5fa; text-decoration: none; font-weight: 600; }
+  </style>
+  <script>
+    var path = window.location.pathname;
+    var postId = path.split('/post/')[1];
+    if (postId) {
+      window.location = 'sloughapp://post/' + postId;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Opening SloughApp...</h1>
+    <p>If the app didn't open, <a href="sloughapp://post/">tap here to try again</a></p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">Don't have the app? Download it from the App Store or Google Play.</p>
+  </div>
+</body>
+</html>
