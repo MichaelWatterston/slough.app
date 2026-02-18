@@ -20,7 +20,7 @@
     .container {
       text-align: center;
       padding: 40px 24px;
-      max-width: 480px;
+      max-width: 600px;
     }
     .logo {
       width: 100px;
@@ -47,41 +47,41 @@
       line-height: 1.6;
       margin-bottom: 48px;
     }
-    .store-buttons {
+    .store-cards {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
       align-items: center;
     }
-    .store-btn {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+    .store-card {
       background: #1a1a1a;
       border: 1px solid #2a2a2a;
-      border-radius: 14px;
-      padding: 14px 28px;
+      border-radius: 20px;
+      padding: 28px 32px;
+      width: 100%;
+      max-width: 320px;
       text-decoration: none;
       color: #fff;
-      width: 260px;
       transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
     }
-    .store-btn:hover {
+    .store-card:hover {
       background: #222;
       border-color: #3b82f6;
       transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 4px 24px rgba(59, 130, 246, 0.2);
     }
-    .store-icon {
-      flex-shrink: 0;
+    .store-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
-    .store-icon svg {
-      width: 32px;
-      height: 32px;
-    }
-    .store-text {
-      text-align: left;
-    }
+    .store-icon { flex-shrink: 0; }
+    .store-icon svg { width: 32px; height: 32px; }
+    .store-text { text-align: left; }
     .store-label {
       font-size: 0.7rem;
       color: #9ca3af;
@@ -93,16 +93,53 @@
       font-weight: 600;
       margin-top: 2px;
     }
+    .qr-wrapper {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-wrapper img {
+      width: 140px;
+      height: 140px;
+      display: block;
+    }
+    .scan-text {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 320px;
+      color: #4b5563;
+      font-size: 0.8rem;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #2a2a2a;
+    }
     .footer {
       margin-top: 56px;
       color: #4b5563;
       font-size: 0.85rem;
     }
-    @media (min-width: 480px) {
-      .store-buttons {
+    @media (min-width: 680px) {
+      .container { max-width: 720px; }
+      .store-cards {
         flex-direction: row;
         justify-content: center;
+        align-items: stretch;
       }
+      .divider { display: none; }
     }
   </style>
 </head>
@@ -112,33 +149,47 @@
     <h1>SloughApp</h1>
     <p class="tagline">Connect with your local community.<br>Share posts, join groups, and stay in the loop.</p>
 
-    <div class="store-buttons">
-      <a href="https://apps.apple.com/app/YOUR_APP_ID" class="store-btn">
-        <div class="store-icon">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.154 16.924c-.03-3.072 2.508-4.548 2.622-4.62-1.428-2.088-3.654-2.376-4.446-2.41-1.89-.192-3.69 1.114-4.65 1.114-.96 0-2.442-1.086-4.014-1.056-2.064.03-3.966 1.2-5.028 3.048-2.142 3.72-.546 9.228 1.542 12.246 1.02 1.476 2.238 3.138 3.84 3.078 1.536-.06 2.118-1.002 3.978-1.002 1.86 0 2.382.996 4.014.966 1.662-.03 2.718-1.506 3.732-2.988 1.176-1.716 1.662-3.378 1.692-3.462-.036-.018-3.246-1.248-3.282-4.914z" fill="#fff"/>
-            <path d="M19.104 7.654c.852-1.032 1.428-2.466 1.272-3.894-1.23.048-2.718.822-3.6 1.854-.792.918-1.482 2.388-1.296 3.798 1.374.108 2.772-.696 3.624-1.758z" fill="#fff"/>
-          </svg>
+    <div class="store-cards">
+      <a href="https://apps.apple.com/app/YOUR_APP_ID" class="store-card">
+        <div class="store-header">
+          <div class="store-icon">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.154 16.924c-.03-3.072 2.508-4.548 2.622-4.62-1.428-2.088-3.654-2.376-4.446-2.41-1.89-.192-3.69 1.114-4.65 1.114-.96 0-2.442-1.086-4.014-1.056-2.064.03-3.966 1.2-5.028 3.048-2.142 3.72-.546 9.228 1.542 12.246 1.02 1.476 2.238 3.138 3.84 3.078 1.536-.06 2.118-1.002 3.978-1.002 1.86 0 2.382.996 4.014.966 1.662-.03 2.718-1.506 3.732-2.988 1.176-1.716 1.662-3.378 1.692-3.462-.036-.018-3.246-1.248-3.282-4.914z" fill="#fff"/>
+              <path d="M19.104 7.654c.852-1.032 1.428-2.466 1.272-3.894-1.23.048-2.718.822-3.6 1.854-.792.918-1.482 2.388-1.296 3.798 1.374.108 2.772-.696 3.624-1.758z" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="store-text">
+            <div class="store-label">Download on the</div>
+            <div class="store-name">App Store</div>
+          </div>
         </div>
-        <div class="store-text">
-          <div class="store-label">Download on the</div>
-          <div class="store-name">App Store</div>
+        <div class="qr-wrapper">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fapps.apple.com%2Fapp%2FYOUR_APP_ID&color=0a0a0a&bgcolor=ffffff" alt="App Store QR Code" />
         </div>
+        <span class="scan-text">Scan to download on iOS</span>
       </a>
 
-      <a href="https://play.google.com/store/apps/details?id=com.anonymous.SloughApp" class="store-btn">
-        <div class="store-icon">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.284 3.456c-.36.384-.564.972-.564 1.716v21.66c0 .744.204 1.332.564 1.716l.09.084L16.5 16.512v-.024L4.374 4.368l-.09.088z" fill="#4285F4"/>
-            <path d="M20.544 20.556L16.5 16.512v-.024l4.044-4.044.09.054 4.794 2.724c1.368.78 1.368 2.052 0 2.832l-4.794 2.724-.09-.222z" fill="#FBBC04"/>
-            <path d="M20.634 20.778L16.5 16.5 4.284 28.548c.45.48 1.194.54 2.034.06l14.316-7.83" fill="#34A853"/>
-            <path d="M20.634 12.222L6.318 4.392c-.84-.48-1.584-.42-2.034.06L16.5 16.5l4.134-4.278z" fill="#EA4335"/>
-          </svg>
+      <div class="divider">or</div>
+
+      <a href="https://play.google.com/store/apps/details?id=com.anonymous.SloughApp" class="store-card">
+        <div class="store-header">
+          <div class="store-icon">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.284 3.456c-.36.384-.564.972-.564 1.716v21.66c0 .744.204 1.332.564 1.716l.09.084L16.5 16.512v-.024L4.374 4.368l-.09.088z" fill="#4285F4"/>
+              <path d="M20.544 20.556L16.5 16.512v-.024l4.044-4.044.09.054 4.794 2.724c1.368.78 1.368 2.052 0 2.832l-4.794 2.724-.09-.222z" fill="#FBBC04"/>
+              <path d="M20.634 20.778L16.5 16.5 4.284 28.548c.45.48 1.194.54 2.034.06l14.316-7.83" fill="#34A853"/>
+              <path d="M20.634 12.222L6.318 4.392c-.84-.48-1.584-.42-2.034.06L16.5 16.5l4.134-4.278z" fill="#EA4335"/>
+            </svg>
+          </div>
+          <div class="store-text">
+            <div class="store-label">Get it on</div>
+            <div class="store-name">Google Play</div>
+          </div>
         </div>
-        <div class="store-text">
-          <div class="store-label">Get it on</div>
-          <div class="store-name">Google Play</div>
+        <div class="qr-wrapper">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.anonymous.SloughApp&color=0a0a0a&bgcolor=ffffff" alt="Google Play QR Code" />
         </div>
+        <span class="scan-text">Scan to download on Android</span>
       </a>
     </div>
 
