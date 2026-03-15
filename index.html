@@ -132,6 +132,21 @@
       color: #4b5563;
       font-size: 0.85rem;
     }
+    .footer-links {
+      margin-top: 16px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #3b82f6;
+    }
     @media (min-width: 680px) {
       .container { max-width: 720px; }
       .store-cards {
@@ -193,7 +208,13 @@
       </a>
     </div>
 
-    <p class="footer">&copy; 2026 SloughApp. All rights reserved.</p>
+    <p class="footer">
+      &copy; 2026 SloughApp. All rights reserved.
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </p>
   </div>
 </body>
 </html>
