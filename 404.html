@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SloughApp</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #121212;
+      color: #fff;
+    }
+    .card {
+      text-align: center;
+      padding: 40px 32px;
+      max-width: 380px;
+      width: 90%;
+    }
+    h1 { font-size: 1.6rem; margin: 0 0 8px; }
+    p  { color: #aaa; margin: 0 0 32px; }
+    .btn {
+      display: block;
+      padding: 14px 0;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+    .btn-open  { background: #2563eb; color: #fff; }
+    .btn-ios   { background: #1c1c1e; color: #fff; border: 1px solid #333; }
+    .btn-android { background: #1c1c1e; color: #fff; border: 1px solid #333; }
+    small { color: #555; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>SloughApp</h1>
+    <p id="subtitle">Someone shared a post with you.</p>
+    <a id="open-btn" class="btn btn-open" href="#">Open in SloughApp</a>
+    <a class="btn btn-ios" href="https://apps.apple.com/app/sloughapp/idXXXXXXXXX">
+      Download on the App Store
+    </a>
+    <a class="btn btn-android" href="https://play.google.com/store/apps/details?id=com.sloughapp.app">
+      Get it on Google Play
+    </a>
+    <br /><small>Don't have the app? Download it above.</small>
+  </div>
+  <script>
+    var path = window.location.pathname;
+    var m = path.match(/^\/post\/([^/?#]+)/);
+    if (m) {
+      var deepLink = 'sloughapp://post/' + m[1];
+      document.getElementById('open-btn').href = deepLink;
+      window.location.href = deepLink;
+    } else {
+      document.getElementById('open-btn').style.display = 'none';
+      document.getElementById('subtitle').textContent = 'The community app for Slough.';
+    }
+  </script>
+</body>
+</html>

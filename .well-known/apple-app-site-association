@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "YOUR_TEAM_ID.com.anonymous.SloughApp",
+        "appID": "P5NC2Z865G.com.sloughapp.app",
         "paths": ["/post/*"]
       }
     ]
