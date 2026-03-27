@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "P5NC2Z865G.com.sloughapp.app",
-        "paths": ["/post/*"]
+        "paths": ["/post/*", "/userProfile/*", "/reset-password"]  
       }
     ]
   }
