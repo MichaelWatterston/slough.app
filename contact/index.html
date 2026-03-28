@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Contact - SloughApp" />
+  <meta property="og:description" content="Get in touch with the SloughApp team" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <title>Contact - SloughApp</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .back-link {
+      color: #3b82f6;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #60a5fa; }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .logo {
+      width: 48px;
+      height: 48px;
+      display: block;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .header-content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .subtitle {
+      color: #9ca3af;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+    input, textarea {
+      width: 100%;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #e5e7eb;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+      outline: none;
+    }
+    input::placeholder, textarea::placeholder { color: #4b5563; }
+    input:focus, textarea:focus {
+      border-color: #3b82f6;
+      background: #161616;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+    /* Honeypot — visually hidden from real users */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      pointer-events: none;
+      tab-index: -1;
+    }
+    button[type="submit"] {
+      width: 100%;
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+    button[type="submit"]:hover:not(:disabled) { background: #2563eb; }
+    button[type="submit"]:active:not(:disabled) { transform: scale(0.98); }
+    button[type="submit"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .message {
+      display: none;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      margin-top: 16px;
+    }
+    .message.success {
+      display: block;
+      background: #052e16;
+      border: 1px solid #166534;
+      color: #86efac;
+    }
+    .message.error {
+      display: block;
+      background: #1c0a09;
+      border: 1px solid #7f1d1d;
+      color: #fca5a5;
+    }
+    .footer {
+      margin-top: 48px;
+      color: #4b5563;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .footer-links {
+      margin-top: 12px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #3b82f6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to Home</a>
+
+    <div class="header">
+      <div class="logo"><img src="/logo.png" alt="SloughApp Logo"></div>
+      <div class="header-content">
+        <h1>Contact Us</h1>
+      </div>
+    </div>
+    <p class="subtitle">Have a question or need help? Send us a message and we'll get back to you.</p>
+
+    <div class="card">
+      <form id="contact-form" novalidate>
+        <!-- Web3Forms access key — routes submissions to support@slough.app -->
+        <input type="hidden" name="access_key" value="7e7beb73-9a51-48fb-964a-2b3bd0ab4770">
+        <input type="hidden" name="subject" id="hidden-subject" value="New contact form submission">
+        <input type="hidden" name="from_name" id="hidden-from-name" value="">
+
+        <!-- Honeypot field — bots fill this in, humans don't -->
+        <div class="hp-field" aria-hidden="true">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            required
+            maxlength="100"
+            autocomplete="name"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            maxlength="254"
+            autocomplete="email"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject_line"
+            placeholder="How can we help?"
+            required
+            maxlength="150"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Tell us more..."
+            required
+            maxlength="5000"
+          ></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn">Send Message</button>
+
+        <div class="message" id="msg-box"></div>
+      </form>
+    </div>
+
+    <p class="footer">
+      &copy; 2026 SloughApp. All rights reserved.
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </p>
+  </div>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const btn = document.getElementById('submit-btn');
+    const msgBox = document.getElementById('msg-box');
+    const hiddenSubject = document.getElementById('hidden-subject');
+    const hiddenFromName = document.getElementById('hidden-from-name');
+
+    function showMessage(type, text) {
+      msgBox.className = 'message ' + type;
+      msgBox.textContent = text;
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Basic client-side validation
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const subject = form.subject_line.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showMessage('error', 'Please fill in all fields.');
+        return;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        showMessage('error', 'Please enter a valid email address.');
+        return;
+      }
+
+      // Populate hidden fields
+      hiddenSubject.value = 'Contact: ' + subject;
+      hiddenFromName.value = name;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      msgBox.className = 'message';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        });
+        const json = await res.json();
+
+        if (json.success) {
+          showMessage('success', 'Message sent! We\'ll get back to you as soon as possible.');
+          form.reset();
+        } else {
+          showMessage('error', 'Something went wrong. Please try again or email us directly at support@slough.app.');
+        }
+      } catch (_) {
+        showMessage('error', 'Unable to send. Please check your connection or email us directly at support@slough.app.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      }
+    });
+  </script>
+</body>
+</html>
