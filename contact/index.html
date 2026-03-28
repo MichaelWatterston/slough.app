@@ -71,7 +71,7 @@
       color: #9ca3af;
       margin-bottom: 8px;
     }
-    input, textarea {
+    input, textarea, select {
       width: 100%;
       background: #111;
       border: 1px solid #2a2a2a;
@@ -84,10 +84,13 @@
       outline: none;
     }
     input::placeholder, textarea::placeholder { color: #4b5563; }
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: #3b82f6;
       background: #161616;
     }
+    select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+    select option { background: #1a1a1a; }
+    #other-subject { margin-top: 10px; display: none; }
     textarea {
       resize: vertical;
       min-height: 140px;
@@ -212,12 +215,18 @@
 
         <div class="form-group">
           <label for="subject">Subject</label>
+          <select id="subject" name="subject_line" required>
+            <option value="" disabled selected>Select a topic…</option>
+            <option value="Subscription Issues">Subscription Issues</option>
+            <option value="Account Issues">Account Issues</option>
+            <option value="Delete Account">Delete Account</option>
+            <option value="Other">Other</option>
+          </select>
           <input
             type="text"
-            id="subject"
-            name="subject_line"
-            placeholder="How can we help?"
-            required
+            id="other-subject"
+            name="other_subject"
+            placeholder="Describe your topic…"
             maxlength="150"
           >
         </div>
@@ -255,6 +264,14 @@
     const msgBox = document.getElementById('msg-box');
     const hiddenSubject = document.getElementById('hidden-subject');
     const hiddenFromName = document.getElementById('hidden-from-name');
+    const subjectSelect = document.getElementById('subject');
+    const otherSubjectInput = document.getElementById('other-subject');
+
+    subjectSelect.addEventListener('change', function () {
+      const isOther = this.value === 'Other';
+      otherSubjectInput.style.display = isOther ? 'block' : 'none';
+      otherSubjectInput.required = isOther;
+    });
 
     function showMessage(type, text) {
       msgBox.className = 'message ' + type;
@@ -265,12 +282,15 @@
       e.preventDefault();
 
       // Basic client-side validation
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const subject = form.subject_line.value.trim();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const selectedSubject = subjectSelect.value;
+      const subject = selectedSubject === 'Other'
+        ? otherSubjectInput.value.trim()
+        : selectedSubject;
       const message = form.message.value.trim();
 
-      if (!name || !email || !subject || !message) {
+      if (!name || !email || !selectedSubject || !subject || !message) {
         showMessage('error', 'Please fill in all fields.');
         return;
       }
