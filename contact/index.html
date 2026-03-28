@@ -242,6 +242,8 @@
           ></textarea>
         </div>
 
+        <div class="h-captcha" data-captcha="true" data-theme="dark" style="margin-bottom: 16px;"></div>
+
         <button type="submit" id="submit-btn">Send Message</button>
 
         <div class="message" id="msg-box"></div>
@@ -258,6 +260,7 @@
     </p>
   </div>
 
+  <script src="https://web3forms.com/client/script.js" async defer></script>
   <script>
     const form = document.getElementById('contact-form');
     const btn = document.getElementById('submit-btn');
@@ -292,6 +295,12 @@
 
       if (!name || !email || !selectedSubject || !subject || !message) {
         showMessage('error', 'Please fill in all fields.');
+        return;
+      }
+
+      const captchaResponse = form.querySelector('textarea[name="h-captcha-response"]');
+      if (!captchaResponse || !captchaResponse.value) {
+        showMessage('error', 'Please complete the captcha.');
         return;
       }
 
