@@ -4,7 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.sloughapp.app",
-      "sha256_cert_fingerprints": ["YOUR_SHA256_FINGERPRINT"]
+      "sha256_cert_fingerprints": ["27:83:4E:F8:BF:5E:E5:71:8E:60:14:8E:C0:91:13:DD:DF:5B:4B:C1:57:11:2E:8E:D2:47:DE:AB:1F:00:49:B0"]
     }
   }
 ]
