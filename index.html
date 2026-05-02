@@ -3,218 +3,778 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="SloughApp" />
-  <meta property="og:description" content="Connect with your local community" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <title>SloughApp</title>
+  <meta name="description" content="Slough App is the community app built exclusively for Slough. Discover what's happening, buy and sell locally, find jobs near home, and join groups for our town.">
+  <meta property="og:title" content="Slough App — The community app for Slough" />
+  <meta property="og:description" content="Discover what's happening on your street, buy and sell with people nearby, find jobs close to home, and join groups that match your interests. All in one place, made for our town." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/logo.png" />
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Slough App — The community app for Slough</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      min-height: 100vh;
       background: #0a0a0a;
+      color: #e5e7eb;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    section { padding: 96px 24px; position: relative; }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    h1, h2, h3 { color: #fff; letter-spacing: -0.02em; line-height: 1.1; }
+    h2 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    p { color: #9ca3af; }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(180%) blur(16px);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+      background: rgba(10, 10, 10, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; }
+    .brand img { width: 32px; height: 32px; border-radius: 8px; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #3b82f6;
       color: #fff;
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: #2563eb; transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      padding: 80px 24px 64px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.25rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-lede {
+      font-size: 1.15rem;
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    /* STORE BADGES */
+    .badges { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #111;
+      border: 1px solid #232323;
+      padding: 12px 18px;
+      border-radius: 14px;
+      transition: all 0.2s;
+    }
+    .badge:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+    }
+    .badge svg { width: 26px; height: 26px; flex-shrink: 0; }
+    .badge-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .badge-small { font-size: 0.65rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.6px; }
+    .badge-big { font-size: 1.05rem; font-weight: 600; color: #fff; }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+    .meta-row .dot { width: 4px; height: 4px; background: #4b5563; border-radius: 50%; }
+
+    /* PHONE STAGE */
+    .phone-stage {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 480px;
     }
-    .container {
+    .phone-stage::before {
+      content: '';
+      position: absolute;
+      inset: 10% 5%;
+      background: radial-gradient(ellipse, rgba(167, 139, 250, 0.18), transparent 70%);
+      filter: blur(40px);
+      z-index: 0;
+    }
+    .phone {
+      position: relative;
+      border-radius: 38px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+      width: 280px;
+      aspect-ratio: 9 / 19.5;
+      background: #000;
+    }
+    .phone img { width: 100%; height: 100%; object-fit: cover; }
+    .phone-back {
+      position: absolute;
+      width: 240px;
+      top: 30px;
+      left: calc(50% - 200px);
+      transform: rotate(-8deg);
+      opacity: 0.85;
+      z-index: 1;
+    }
+    .phone-front {
+      position: relative;
+      z-index: 2;
+      transform: rotate(4deg);
+    }
+    .phone-third {
+      position: absolute;
+      width: 220px;
+      top: 60px;
+      right: calc(50% - 200px);
+      transform: rotate(10deg);
+      opacity: 0.75;
+      z-index: 1;
+    }
+
+    /* STATS / TRUST STRIP */
+    .strip {
+      padding: 32px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: #060606;
+    }
+    .strip-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
       text-align: center;
-      padding: 40px 24px;
-      max-width: 600px;
     }
-    .logo {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 32px;
-      display: block;
-    }
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    h1 {
-      font-size: 2.5rem;
+    .stat-num {
+      font-size: 1.75rem;
       font-weight: 800;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
+      color: #fff;
+      letter-spacing: -0.02em;
     }
-    .tagline {
-      color: #9ca3af;
-      font-size: 1.15rem;
-      line-height: 1.6;
-      margin-bottom: 48px;
+    .stat-label { font-size: 0.85rem; color: #9ca3af; }
+
+    /* WHY GRID */
+    .why-head { text-align: center; margin-bottom: 56px; }
+    .why-head p { max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
-    .store-cards {
+    .why-card {
+      background: linear-gradient(180deg, #131313 0%, #0e0e0e 100%);
+      border: 1px solid #1f1f1f;
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px circle at var(--x, 50%) var(--y, 0%), rgba(59, 130, 246, 0.08), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .why-card:hover { border-color: #2a2a2a; transform: translateY(-3px); }
+    .why-card:hover::before { opacity: 1; }
+    .why-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .why-icon svg { width: 22px; height: 22px; }
+    .icon-blue { background: rgba(59, 130, 246, 0.12); color: #60a5fa; }
+    .icon-green { background: rgba(34, 197, 94, 0.12); color: #4ade80; }
+    .icon-amber { background: rgba(245, 158, 11, 0.12); color: #fbbf24; }
+    .icon-purple { background: rgba(167, 139, 250, 0.14); color: #c4b5fd; }
+
+    /* FEATURE SHOWCASE */
+    .show {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: center;
+      margin-top: 80px;
+    }
+    .show + .show { margin-top: 120px; }
+    .show.flip .show-text { order: 2; }
+    .show.flip .show-img { order: 1; }
+    .show-text h2 { font-size: clamp(1.75rem, 3.5vw, 2.4rem); }
+    .show-text p { font-size: 1.05rem; max-width: 480px; }
+    .show-img {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .show-img::before {
+      content: '';
+      position: absolute;
+      inset: 5%;
+      background: radial-gradient(ellipse, rgba(59, 130, 246, 0.15), transparent 70%);
+      filter: blur(40px);
+      z-index: 0;
+    }
+    .show-phone {
+      position: relative;
+      width: 270px;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow:
+        0 24px 48px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+      z-index: 1;
+    }
+    .show-phone img { width: 100%; height: 100%; object-fit: cover; }
+    .check-list { list-style: none; margin-top: 24px; }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      color: #d1d5db;
+      font-size: 1rem;
+    }
+    .check-list svg { width: 20px; height: 20px; color: #4ade80; flex-shrink: 0; margin-top: 2px; }
+
+    /* BUILT FOR SLOUGH BANNER */
+    .banner {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(167, 139, 250, 0.12));
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 28px;
+      padding: 56px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.18), transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.18), transparent 50%);
+      pointer-events: none;
+    }
+    .banner > * { position: relative; }
+    .banner h2 { margin-bottom: 12px; }
+    .banner p { max-width: 620px; margin: 0 auto; font-size: 1.05rem; }
+
+    /* SAFETY */
+    .safety-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .safety-card {
+      background: #111;
+      border: 1px solid #1f1f1f;
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .safety-card svg { width: 22px; height: 22px; color: #4ade80; flex-shrink: 0; margin-top: 2px; }
+    .safety-card h3 { font-size: 1rem; margin-bottom: 4px; }
+    .safety-card p { font-size: 0.92rem; }
+
+    /* PREMIUM */
+    .premium {
+      background: linear-gradient(135deg, #0c0c0c 0%, #131313 100%);
+      border: 1px solid #1f1f1f;
+      border-radius: 24px;
+      padding: 48px 36px;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 24px;
       align-items: center;
     }
-    .store-card {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 20px;
-      padding: 28px 32px;
-      width: 100%;
-      max-width: 320px;
-      text-decoration: none;
+    .premium-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #3b82f6, #a78bfa);
       color: #fff;
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .store-card:hover {
-      background: #222;
-      border-color: #3b82f6;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 24px rgba(59, 130, 246, 0.2);
-    }
-    .store-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .store-icon { flex-shrink: 0; }
-    .store-icon svg { width: 32px; height: 32px; }
-    .store-text { text-align: left; }
-    .store-label {
       font-size: 0.7rem;
-      color: #9ca3af;
+      font-weight: 700;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      margin-bottom: 14px;
     }
-    .store-name {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-top: 2px;
+    .premium p { font-size: 0.95rem; }
+    .premium small { display: block; color: #6b7280; font-size: 0.78rem; margin-top: 14px; line-height: 1.5; }
+
+    /* FINAL CTA */
+    .final {
+      text-align: center;
+      padding: 120px 24px;
+      position: relative;
+      overflow: hidden;
     }
-    .qr-wrapper {
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .qr-wrapper img {
-      width: 140px;
-      height: 140px;
-      display: block;
-    }
-    .scan-text {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-top: 8px;
-    }
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      width: 100%;
-      max-width: 320px;
-      color: #4b5563;
-      font-size: 0.8rem;
-    }
-    .divider::before,
-    .divider::after {
+    .final::before {
       content: '';
-      flex: 1;
-      height: 1px;
-      background: #2a2a2a;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 60%);
+      pointer-events: none;
     }
-    .footer {
-      margin-top: 56px;
-      color: #4b5563;
-      font-size: 0.85rem;
+    .final > * { position: relative; }
+    .final h2 { font-size: clamp(2rem, 5vw, 3.25rem); margin-bottom: 16px; }
+    .final p { max-width: 540px; margin: 0 auto 32px; font-size: 1.1rem; }
+    .final .badges { justify-content: center; }
+
+    /* FOOTER */
+    footer {
+      padding: 48px 24px 56px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: #060606;
     }
-    .footer-links {
-      margin-top: 16px;
+    .foot-inner {
+      max-width: 1120px;
+      margin: 0 auto;
       display: flex;
-      gap: 20px;
-      justify-content: center;
       flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+      align-items: center;
     }
-    .footer-links a {
-      color: #4b5563;
-      text-decoration: none;
-      transition: color 0.2s;
+    .foot-brand { display: flex; align-items: center; gap: 12px; color: #9ca3af; font-size: 0.9rem; }
+    .foot-brand img { width: 28px; height: 28px; border-radius: 6px; }
+    .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .foot-links a { color: #6b7280; font-size: 0.88rem; transition: color 0.2s; }
+    .foot-links a:hover { color: #60a5fa; }
+    .copyright { font-size: 0.82rem; color: #4b5563; width: 100%; text-align: center; margin-top: 24px; }
+
+    /* RESPONSIVE */
+    @media (min-width: 720px) {
+      .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .strip-inner { grid-template-columns: repeat(4, 1fr); }
+      .show { grid-template-columns: 1fr 1fr; gap: 80px; }
+      .safety-grid { grid-template-columns: repeat(2, 1fr); }
+      .premium { grid-template-columns: 1fr auto; padding: 56px 48px; }
     }
-    .footer-links a:hover {
-      color: #3b82f6;
+    @media (min-width: 980px) {
+      section { padding: 120px 24px; }
+      .why-grid { grid-template-columns: repeat(4, 1fr); }
+      .show-phone { width: 300px; }
+      .phone { width: 300px; }
+      .phone-back { width: 260px; }
+      .phone-third { width: 240px; }
     }
-    @media (min-width: 680px) {
-      .container { max-width: 720px; }
-      .store-cards {
-        flex-direction: row;
-        justify-content: center;
-        align-items: stretch;
-      }
-      .divider { display: none; }
+
+    /* MOTION */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.in { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="logo"><img src="/logo.png" alt="SloughApp Logo"></div>
-    <h1>SloughApp</h1>
-    <p class="tagline">Connect with your local community.<br>Share posts, join groups, and stay in the loop.</p>
 
-    <div class="store-cards">
-      <a href="https://apps.apple.com/app/YOUR_APP_ID" class="store-card">
-        <div class="store-header">
-          <div class="store-icon">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.154 16.924c-.03-3.072 2.508-4.548 2.622-4.62-1.428-2.088-3.654-2.376-4.446-2.41-1.89-.192-3.69 1.114-4.65 1.114-.96 0-2.442-1.086-4.014-1.056-2.064.03-3.966 1.2-5.028 3.048-2.142 3.72-.546 9.228 1.542 12.246 1.02 1.476 2.238 3.138 3.84 3.078 1.536-.06 2.118-1.002 3.978-1.002 1.86 0 2.382.996 4.014.966 1.662-.03 2.718-1.506 3.732-2.988 1.176-1.716 1.662-3.378 1.692-3.462-.036-.018-3.246-1.248-3.282-4.914z" fill="#fff"/>
-              <path d="M19.104 7.654c.852-1.032 1.428-2.466 1.272-3.894-1.23.048-2.718.822-3.6 1.854-.792.918-1.482 2.388-1.296 3.798 1.374.108 2.772-.696 3.624-1.758z" fill="#fff"/>
-            </svg>
-          </div>
-          <div class="store-text">
-            <div class="store-label">Download on the</div>
-            <div class="store-name">App Store</div>
-          </div>
-        </div>
-        <div class="qr-wrapper">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fapps.apple.com%2Fapp%2FYOUR_APP_ID&color=0a0a0a&bgcolor=ffffff" alt="App Store QR Code" />
-        </div>
-        <span class="scan-text">Scan to download on iOS</span>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="brand">
+        <img src="logo.png" alt="">
+        <span>Slough App</span>
       </a>
+      <a href="#download" class="nav-cta">
+        Get the app
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
 
-      <div class="divider">or</div>
-
-      <a href="https://play.google.com/store/apps/details?id=com.anonymous.SloughApp" class="store-card">
-        <div class="store-header">
-          <div class="store-icon">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Made for Slough</span>
+        <h1>Slough,<br><span class="accent">in your pocket.</span></h1>
+        <p class="hero-lede">
+          Slough App is the community app built exclusively for Slough. Discover what's happening on your street, buy and sell with people nearby, find jobs close to home, and join groups that match your interests. All in one place, made for our town.
+        </p>
+        <div class="badges">
+          <a href="https://apps.apple.com/app/YOUR_APP_ID" class="badge" aria-label="Download on the App Store">
+            <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.154 16.924c-.03-3.072 2.508-4.548 2.622-4.62-1.428-2.088-3.654-2.376-4.446-2.41-1.89-.192-3.69 1.114-4.65 1.114-.96 0-2.442-1.086-4.014-1.056-2.064.03-3.966 1.2-5.028 3.048-2.142 3.72-.546 9.228 1.542 12.246 1.02 1.476 2.238 3.138 3.84 3.078 1.536-.06 2.118-1.002 3.978-1.002 1.86 0 2.382.996 4.014.966 1.662-.03 2.718-1.506 3.732-2.988 1.176-1.716 1.662-3.378 1.692-3.462-.036-.018-3.246-1.248-3.282-4.914z"/>
+              <path d="M19.104 7.654c.852-1.032 1.428-2.466 1.272-3.894-1.23.048-2.718.822-3.6 1.854-.792.918-1.482 2.388-1.296 3.798 1.374.108 2.772-.696 3.624-1.758z"/>
+            </svg>
+            <span class="badge-text">
+              <span class="badge-small">Download on the</span>
+              <span class="badge-big">App Store</span>
+            </span>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.anonymous.SloughApp" class="badge" aria-label="Get it on Google Play">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.284 3.456c-.36.384-.564.972-.564 1.716v21.66c0 .744.204 1.332.564 1.716l.09.084L16.5 16.512v-.024L4.374 4.368l-.09.088z" fill="#4285F4"/>
               <path d="M20.544 20.556L16.5 16.512v-.024l4.044-4.044.09.054 4.794 2.724c1.368.78 1.368 2.052 0 2.832l-4.794 2.724-.09-.222z" fill="#FBBC04"/>
               <path d="M20.634 20.778L16.5 16.5 4.284 28.548c.45.48 1.194.54 2.034.06l14.316-7.83" fill="#34A853"/>
               <path d="M20.634 12.222L6.318 4.392c-.84-.48-1.584-.42-2.034.06L16.5 16.5l4.134-4.278z" fill="#EA4335"/>
             </svg>
-          </div>
-          <div class="store-text">
-            <div class="store-label">Get it on</div>
-            <div class="store-name">Google Play</div>
-          </div>
+            <span class="badge-text">
+              <span class="badge-small">Get it on</span>
+              <span class="badge-big">Google Play</span>
+            </span>
+          </a>
         </div>
-        <div class="qr-wrapper">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.anonymous.SloughApp&color=0a0a0a&bgcolor=ffffff" alt="Google Play QR Code" />
+        <div class="meta-row">
+          <span>Free to download</span>
+          <span class="dot"></span>
+          <span>iOS &amp; Android</span>
+          <span class="dot"></span>
+          <span>No noise from other cities</span>
         </div>
-        <span class="scan-text">Scan to download on Android</span>
-      </a>
-    </div>
-
-    <p class="footer">
-      &copy; 2026 SloughApp. All rights reserved.
-      <div class="footer-links">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
-        <a href="/contact">Contact</a>
       </div>
-    </p>
+
+      <div class="phone-stage reveal">
+        <div class="phone phone-back"><img src="assets/screenshots/screenshot4.png" alt="Slough App community feed"></div>
+        <div class="phone phone-front"><img src="assets/screenshots/screenshot5.png" alt="Slough App home screen"></div>
+        <div class="phone phone-third"><img src="assets/screenshots/screenshot1.png" alt="Slough App messages"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUST STRIP -->
+  <div class="strip">
+    <div class="strip-inner">
+      <div>
+        <div class="stat-num">14</div>
+        <div class="stat-label">Group categories</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Local to Slough</div>
+      </div>
+      <div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Active moderation</div>
+      </div>
+      <div>
+        <div class="stat-num">Free</div>
+        <div class="stat-label">To join &amp; use</div>
+      </div>
+    </div>
   </div>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="why-head reveal">
+        <span class="eyebrow">Why Slough App</span>
+        <h2>Everything local, nothing else.</h2>
+        <p>Generic community apps spread content across the country. We keep every post, listing, job and group inside the town — so what you see is actually relevant.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>Discover</h3>
+          <p>Slough's own feed, built around our streets, schools, shops and neighbours.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3>Buy &amp; Sell</h3>
+          <p>Trade with local people. List items in seconds, message buyers safely, and collect nearby.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3>Find Jobs</h3>
+          <p>Roles close to home. Browse jobs from Slough employers and skip the commute.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Join Groups</h3>
+          <p>Match your interests — sport, families, food, faith, parenting, hobbies and more across 14 categories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE SHOWCASE 1 -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="show reveal">
+        <div class="show-text">
+          <span class="eyebrow">A real-time local feed</span>
+          <h2>See what's happening on your street.</h2>
+          <p>Post updates, photos and videos to a feed that only Slough sees. Reply, react, and stay in the loop with neighbours — without the noise from every other town in the country.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Real-time posts, photos and videos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Notifications for replies, messages and invites</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Profiles, reputation, and connections</li>
+          </ul>
+        </div>
+        <div class="show-img">
+          <div class="show-phone"><img src="assets/screenshots/screenshot4.png" alt="Slough App feed"></div>
+        </div>
+      </div>
+
+      <div class="show flip reveal">
+        <div class="show-text">
+          <span class="eyebrow">Hyper-local marketplace</span>
+          <h2>Buy and sell with people nearby.</h2>
+          <p>Skip the postage, skip the strangers from miles away. List items in seconds, chat safely in-app, and collect from somewhere you already know.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>List in under 30 seconds</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Safe in-app messaging</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mark as sold, manage offers</li>
+          </ul>
+        </div>
+        <div class="show-img">
+          <div class="show-phone"><img src="assets/screenshots/screenshot3.png" alt="Slough App marketplace listing"></div>
+        </div>
+      </div>
+
+      <div class="show reveal">
+        <div class="show-text">
+          <span class="eyebrow">Jobs &amp; groups</span>
+          <h2>Work close to home. Meet your people.</h2>
+          <p>Find roles posted by Slough employers and side gigs from local residents. Then join groups across 14 categories — sport, families, food, faith, parenting, hobbies and more.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Local jobs and side gigs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Interest-based group chats</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Events, families, faith, sport &amp; more</li>
+          </ul>
+        </div>
+        <div class="show-img">
+          <div class="show-phone"><img src="assets/screenshots/screenshot6.png" alt="Slough App community groups"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT FOR SLOUGH BANNER -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="banner reveal">
+        <span class="eyebrow">Built for Slough</span>
+        <h2>No postcode filtering. No noise from other cities. Just Slough.</h2>
+        <p>Every post, listing, job and group lives inside the town. So when something opens up, gets sold, or fills up — you actually hear about it in time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+        <span class="eyebrow">Safe by design</span>
+        <h2>You're in control.</h2>
+        <p>We actively moderate content and respond quickly to reports. You always have the final say over what you see.</p>
+      </div>
+
+      <div class="safety-grid">
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          <div>
+            <h3>Report &amp; block</h3>
+            <p>Flag any post or message. Block users instantly so they can't reach you.</p>
+          </div>
+        </div>
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+          <div>
+            <h3>Hide content</h3>
+            <p>Mute keywords, topics or accounts you'd rather not see.</p>
+          </div>
+        </div>
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          <div>
+            <h3>Delete your data</h3>
+            <p>Remove your account and data at any time, no questions asked.</p>
+          </div>
+        </div>
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div>
+            <h3>Active moderation</h3>
+            <p>A real team responds to reports quickly to keep the community safe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="premium reveal">
+        <div>
+          <span class="premium-tag">Optional</span>
+          <h2>Slough App Premium</h2>
+          <p>Upgrade for additional features. Cancel anytime in your device settings. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period.</p>
+          <small>Premium is entirely optional — every essential feature in Slough App stays free, forever.</small>
+        </div>
+        <a href="#download" class="nav-cta">
+          Get the app
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="download" class="final">
+    <div class="wrap">
+      <span class="eyebrow reveal">Download for free</span>
+      <h2 class="reveal">Join your neighbours.</h2>
+      <p class="reveal">The community app made for Slough. Get it on iOS or Android — it takes about 30 seconds.</p>
+      <div class="badges reveal">
+        <a href="https://apps.apple.com/app/YOUR_APP_ID" class="badge">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M22.154 16.924c-.03-3.072 2.508-4.548 2.622-4.62-1.428-2.088-3.654-2.376-4.446-2.41-1.89-.192-3.69 1.114-4.65 1.114-.96 0-2.442-1.086-4.014-1.056-2.064.03-3.966 1.2-5.028 3.048-2.142 3.72-.546 9.228 1.542 12.246 1.02 1.476 2.238 3.138 3.84 3.078 1.536-.06 2.118-1.002 3.978-1.002 1.86 0 2.382.996 4.014.966 1.662-.03 2.718-1.506 3.732-2.988 1.176-1.716 1.662-3.378 1.692-3.462-.036-.018-3.246-1.248-3.282-4.914z"/><path d="M19.104 7.654c.852-1.032 1.428-2.466 1.272-3.894-1.23.048-2.718.822-3.6 1.854-.792.918-1.482 2.388-1.296 3.798 1.374.108 2.772-.696 3.624-1.758z"/></svg>
+          <span class="badge-text">
+            <span class="badge-small">Download on the</span>
+            <span class="badge-big">App Store</span>
+          </span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.anonymous.SloughApp" class="badge">
+          <svg viewBox="0 0 32 32"><path d="M4.284 3.456c-.36.384-.564.972-.564 1.716v21.66c0 .744.204 1.332.564 1.716l.09.084L16.5 16.512v-.024L4.374 4.368l-.09.088z" fill="#4285F4"/><path d="M20.544 20.556L16.5 16.512v-.024l4.044-4.044.09.054 4.794 2.724c1.368.78 1.368 2.052 0 2.832l-4.794 2.724-.09-.222z" fill="#FBBC04"/><path d="M20.634 20.778L16.5 16.5 4.284 28.548c.45.48 1.194.54 2.034.06l14.316-7.83" fill="#34A853"/><path d="M20.634 12.222L6.318 4.392c-.84-.48-1.584-.42-2.034.06L16.5 16.5l4.134-4.278z" fill="#EA4335"/></svg>
+          <span class="badge-text">
+            <span class="badge-small">Get it on</span>
+            <span class="badge-big">Google Play</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-inner">
+      <a href="/" class="foot-brand">
+        <img src="logo.png" alt="">
+        <span>Slough App</span>
+      </a>
+      <div class="foot-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact</a>
+        <a href="/child-safety">Child Safety</a>
+      </div>
+      <p class="copyright">&copy; 2026 Slough App. Made for our town.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Cursor glow on why-cards
+    document.querySelectorAll('.why-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--x', `${e.clientX - r.left}px`);
+        card.style.setProperty('--y', `${e.clientY - r.top}px`);
+      });
+    });
+  </script>
 </body>
 </html>
