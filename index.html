@@ -240,21 +240,21 @@
       width: 240px;
       top: 30px;
       left: calc(50% - 200px);
-      transform: rotate(-8deg);
+      rotate: -8deg;
       opacity: 0.85;
       z-index: 1;
     }
     .phone-front {
       position: relative;
       z-index: 2;
-      transform: rotate(4deg);
+      rotate: 4deg;
     }
     .phone-third {
       position: absolute;
       width: 220px;
       top: 60px;
       right: calc(50% - 200px);
-      transform: rotate(10deg);
+      rotate: 10deg;
       opacity: 0.75;
       z-index: 1;
     }
@@ -565,9 +565,103 @@
     }
 
     /* MOTION */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    @keyframes heroBlob {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+      50% { transform: translateX(-50%) scale(1.08); opacity: 0.85; }
+    }
+    @keyframes finalBlob {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.85; }
+    }
+    @keyframes phoneFloatA {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -10px; }
+    }
+    @keyframes phoneFloatB {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -16px; }
+    }
+    @keyframes phoneFloatC {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -8px; }
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(-3deg); }
+    }
+    @keyframes navSlideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 4px 14px rgba(178, 28, 223, 0.25); }
+      50% { box-shadow: 0 4px 22px rgba(178, 28, 223, 0.5); }
+    }
+
     @media (prefers-reduced-motion: no-preference) {
-      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1); }
       .reveal.in { opacity: 1; transform: translateY(0); }
+
+      /* Stagger inside grouped reveals */
+      .why-grid > .reveal:nth-child(1) { transition-delay: 0.05s; }
+      .why-grid > .reveal:nth-child(2) { transition-delay: 0.15s; }
+      .why-grid > .reveal:nth-child(3) { transition-delay: 0.25s; }
+      .why-grid > .reveal:nth-child(4) { transition-delay: 0.35s; }
+      .safety-grid > .reveal:nth-child(1) { transition-delay: 0.05s; }
+      .safety-grid > .reveal:nth-child(2) { transition-delay: 0.15s; }
+      .safety-grid > .reveal:nth-child(3) { transition-delay: 0.25s; }
+      .safety-grid > .reveal:nth-child(4) { transition-delay: 0.35s; }
+      .check-list > .reveal:nth-child(1) { transition-delay: 0.05s; }
+      .check-list > .reveal:nth-child(2) { transition-delay: 0.15s; }
+      .check-list > .reveal:nth-child(3) { transition-delay: 0.25s; }
+      .final .reveal:nth-child(1) { transition-delay: 0s; }
+      .final .reveal:nth-child(2) { transition-delay: 0.1s; }
+      .final .reveal:nth-child(3) { transition-delay: 0.2s; }
+      .final .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+      /* Hero entrance (above the fold — fire immediately) */
+      .nav { animation: navSlideDown 0.6s ease-out backwards; }
+      .hero .eyebrow { animation: fadeInUp 0.8s 0.1s cubic-bezier(.2,.7,.2,1) backwards; }
+      .hero-logo {
+        animation:
+          fadeInScale 0.9s 0.2s cubic-bezier(.2,.7,.2,1) backwards,
+          logoFloat 6s 1.2s ease-in-out infinite;
+      }
+      .hero h1 { animation: fadeInUp 0.9s 0.3s cubic-bezier(.2,.7,.2,1) backwards; }
+      .hero-lede { animation: fadeInUp 0.9s 0.45s cubic-bezier(.2,.7,.2,1) backwards; }
+      .hero .badges .badge:nth-child(1) { animation: fadeInUp 0.7s 0.55s cubic-bezier(.2,.7,.2,1) backwards; }
+      .hero .badges .badge:nth-child(2) { animation: fadeInUp 0.7s 0.65s cubic-bezier(.2,.7,.2,1) backwards; }
+      .hero .meta-row { animation: fadeInUp 0.7s 0.75s cubic-bezier(.2,.7,.2,1) backwards; }
+
+      /* Phones — entrance + continuous float */
+      .phone-back  { animation: fadeInUp 1s 0.5s cubic-bezier(.2,.7,.2,1) backwards, phoneFloatA 6s 1.5s ease-in-out infinite; }
+      .phone-front { animation: fadeInUp 1s 0.65s cubic-bezier(.2,.7,.2,1) backwards, phoneFloatB 7s 1.65s ease-in-out infinite; }
+      .phone-third { animation: fadeInUp 1s 0.8s cubic-bezier(.2,.7,.2,1) backwards, phoneFloatC 6.5s 1.8s ease-in-out infinite; }
+
+      /* Animated brand gradient on accent text + stat numbers */
+      .hero h1 .accent { background-size: 200% 200%; animation: gradientShift 8s ease infinite; }
+      .stat-num { background-size: 200% 200%; animation: gradientShift 6s ease infinite; }
+
+      /* Glow pulses behind hero + final */
+      .hero::before { animation: heroBlob 9s ease-in-out infinite; }
+      .final::before { animation: finalBlob 10s ease-in-out infinite; }
+
+      /* CTA arrow nudge on hover */
+      .nav-cta svg { transition: transform 0.25s ease; }
+      .nav-cta:hover svg { transform: translateX(4px); }
+      .nav-cta { animation: ctaPulse 4s ease-in-out infinite; }
     }
   </style>
 </head>
@@ -590,7 +684,7 @@
   <!-- HERO -->
   <header class="hero">
     <div class="wrap hero-grid">
-      <div class="reveal">
+      <div>
         <span class="eyebrow">Made for Slough</span>
         <div class="hero-title">
           <img src="logo.png" alt="Slough App logo" class="hero-logo">
@@ -632,7 +726,7 @@
         </div>
       </div>
 
-      <div class="phone-stage reveal">
+      <div class="phone-stage">
         <div class="phone phone-back"><img src="assets/screenshots/screenshot4.png" alt="Slough App community feed"></div>
         <div class="phone phone-front"><img src="assets/screenshots/screenshot5.png" alt="Slough App home screen"></div>
         <div class="phone phone-third"><img src="assets/screenshots/screenshot1.png" alt="Slough App messages"></div>
@@ -709,9 +803,9 @@
           <h2>See what's happening on your street.</h2>
           <p>Post updates, photos and videos to a feed that only Slough sees. Reply, react, and stay in the loop with neighbours — without the noise from every other town in the country.</p>
           <ul class="check-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Real-time posts, photos and videos</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Notifications for replies, messages and invites</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Profiles, reputation, and connections</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Real-time posts, photos and videos</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Notifications for replies, messages and invites</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Profiles, reputation, and connections</li>
           </ul>
         </div>
         <div class="show-img">
@@ -725,9 +819,9 @@
           <h2>Buy and sell with people nearby.</h2>
           <p>Skip the postage, skip the strangers from miles away. List items in seconds, chat safely in-app, and collect from somewhere you already know.</p>
           <ul class="check-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>List in under 30 seconds</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Safe in-app messaging</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mark as sold, manage offers</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>List in under 30 seconds</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Safe in-app messaging</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mark as sold, manage offers</li>
           </ul>
         </div>
         <div class="show-img">
@@ -741,9 +835,9 @@
           <h2>Work close to home. Meet your people.</h2>
           <p>Find roles posted by Slough employers and side gigs from local residents. Then join groups across 14 categories — sport, families, food, faith, parenting, hobbies and more.</p>
           <ul class="check-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Local jobs and side gigs</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Interest-based group chats</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Events, families, faith, sport &amp; more</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Local jobs and side gigs</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Interest-based group chats</li>
+            <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Events, families, faith, sport &amp; more</li>
           </ul>
         </div>
         <div class="show-img">
