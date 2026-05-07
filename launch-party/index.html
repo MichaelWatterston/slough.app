@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Slough App is launching soon. Drop your email to be the first to know when it goes live.">
+  <meta property="og:title" content="Launching Soon — Slough App" />
+  <meta property="og:description" content="Be first inside Slough App. Get notified the moment it launches on the App Store and Google Play." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/logo.png" />
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <title>Launching Soon — Slough App</title>
+<style>
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    padding: 64px 24px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1100px;
+    height: 1100px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 35%, rgba(225, 225, 32, 0.16), transparent 45%),
+      radial-gradient(circle at 65% 35%, rgba(221, 38, 57, 0.14), transparent 45%),
+      radial-gradient(circle at 60% 70%, rgba(178, 28, 223, 0.18), transparent 45%),
+      radial-gradient(circle at 35% 65%, rgba(47, 34, 225, 0.14), transparent 45%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 70%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(40px);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .hero-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+    text-align: left;
+    flex-wrap: nowrap;
+  }
+  .hero-logo {
+    width: clamp(72px, 11vw, 128px);
+    height: clamp(72px, 11vw, 128px);
+    border-radius: clamp(16px, 2vw, 26px);
+    flex-shrink: 0;
+    box-shadow: 0 12px 32px rgba(47, 34, 225, 0.22);
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5.4vw, 3.75rem);
+    font-weight: 700;
+    color: var(--c-blue);
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.05;
+    text-align: left;
+  }
+  .hero h1 .accent {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+  }
+  .hero-lede {
+    max-width: 580px;
+    margin: 0 auto 8px;
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* MAILCHIMP FORM */
+  .signup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 36px auto 16px;
+    max-width: 480px;
+    text-align: left;
+    position: relative;
+  }
+  .signup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .signup input[type="text"],
+  .signup input[type="email"] {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--ink);
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  .signup input::placeholder { color: #9ca3af; }
+  .signup input:focus {
+    border-color: rgba(178, 28, 223, 0.7);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(178, 28, 223, 0.18);
+  }
+  .signup button {
+    width: 100%;
+    background: var(--brand-gradient);
+    background-size: 200% 200%;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-position 0.4s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(178, 28, 223, 0.25);
+  }
+  .signup button:hover { background-position: 100% 100%; transform: translateY(-1px); box-shadow: 0 8px 22px rgba(178, 28, 223, 0.32); }
+  .signup button:active { transform: scale(0.98); }
+  .hp-field { position: absolute; left: -5000px; opacity: 0; pointer-events: none; }
+  @media (min-width: 560px) {
+    .signup-fields { flex-direction: row; }
+    .signup-fields > * { flex: 1; min-width: 0; }
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 14px;
+  }
+  .meta-row .dot { width: 4px; height: 4px; background: #c7c7d6; border-radius: 50%; }
+
+  /* HERO PHONES (overlapping mockups) */
+  .hero-phones {
+    position: relative;
+    max-width: 1600px;
+    width: 100%;
+    margin: 56px auto 0;
+    display: grid;
+  }
+  @media (min-width: 880px) { .hero-phones { max-width: 1200px; } }
+  @media (min-width: 1280px) { .hero-phones { max-width: 1300px; } }
+  .hero-phones img {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hero-phones .h-left { z-index: 1; }
+  .hero-phones .h-mid { z-index: 2; }
+  .hero-phones .h-right { z-index: 1; }
+
+  /* PERKS */
+  .perks-section { padding: 80px 24px; }
+  .perks-head { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+  .perks-head p { font-size: 1.05rem; }
+  .perks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .perk-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+    transition: all 0.3s;
+    box-shadow: 0 1px 2px rgba(19, 19, 70, 0.04);
+  }
+  .perk-card:hover {
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(19, 19, 70, 0.12);
+    background-image: linear-gradient(#ffffff, #ffffff), var(--brand-gradient);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  .perk-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .perk-icon svg { width: 22px; height: 22px; }
+  .icon-blue { background: rgba(47, 34, 225, 0.12); color: var(--c-blue); }
+  .icon-yellow { background: rgba(225, 225, 32, 0.20); color: #8a8a18; }
+  .icon-purple { background: rgba(178, 28, 223, 0.12); color: var(--c-purple); }
+  .perk-card p { font-size: 0.95rem; }
+  .perk-cta {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 14px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--c-blue);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .perk-cta:hover { background: #1f15c4; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(47, 34, 225, 0.25); }
+
+  /* RESPONSIVE */
+  @media (min-width: 720px) {
+    .perks-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* MOTION */
+  @keyframes heroBlob {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(1.08); opacity: 0.85; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-title { animation: fadeInUp 0.9s 0.1s cubic-bezier(.2,.7,.2,1) backwards; }
+    .hero-lede { animation: fadeInUp 0.9s 0.3s cubic-bezier(.2,.7,.2,1) backwards; }
+    .signup { animation: fadeInUp 0.9s 0.45s cubic-bezier(.2,.7,.2,1) backwards; }
+    .meta-row { animation: fadeInUp 0.9s 0.6s cubic-bezier(.2,.7,.2,1) backwards; }
+    .hero-phones { animation: fadeInUp 1s 0.75s cubic-bezier(.2,.7,.2,1) backwards; }
+    .hero h1 .accent { background-size: 200% 200%; animation: gradientShift 8s ease infinite; }
+    .hero::before { animation: heroBlob 9s ease-in-out infinite; }
+
+    .perks-grid > .reveal:nth-child(1) { transition-delay: 0.05s; }
+    .perks-grid > .reveal:nth-child(2) { transition-delay: 0.15s; }
+    .perks-grid > .reveal:nth-child(3) { transition-delay: 0.25s; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand">
+        <img src="../logo.png" alt="">
+        <span>Slough App</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/get-slough-app">Get the App</a>
+        <a href="/become-a-tester">Become a Tester</a>
+      </div>
+      <div class="nav-right">
+        <a href="/become-a-tester" class="nav-cta">Become a Tester</a>
+        <div class="nav-burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Launching soon · Slough</span>
+      <div class="hero-title">
+        <img src="../logo.png" alt="Slough App logo" class="hero-logo">
+        <h1>Slough App is coming.<br><span class="accent">Be first to know.</span></h1>
+      </div>
+      <p class="hero-lede">
+        Slough App is launching soon. Drop your email and we'll let you know the moment it goes live on the App Store and Google Play.
+      </p>
+
+      <form
+        action="https://app.us14.list-manage.com/subscribe/post?u=824d3e0c69215877cee4ccb49&amp;id=3039cd3be3&amp;f_id=00075de5f0"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        class="signup"
+        target="_blank"
+        novalidate
+      >
+        <div class="signup-fields">
+          <label for="mce-FNAME" style="position:absolute;left:-5000px;">First Name</label>
+          <input
+            type="text"
+            name="FNAME"
+            id="mce-FNAME"
+            placeholder="First name"
+            autocomplete="given-name"
+          >
+          <label for="mce-EMAIL" style="position:absolute;left:-5000px;">Email Address</label>
+          <input
+            type="email"
+            name="EMAIL"
+            id="mce-EMAIL"
+            required
+            placeholder="you@example.com"
+            autocomplete="email"
+          >
+        </div>
+        <button type="submit" name="subscribe">Notify me at launch</button>
+        <!-- Mailchimp honeypot — must remain in the form -->
+        <div class="hp-field" aria-hidden="true">
+          <input type="text" name="b_824d3e0c69215877cee4ccb49_3039cd3be3" tabindex="-1" value="">
+        </div>
+      </form>
+
+      <div class="meta-row">
+        <span>No spam</span>
+        <span class="dot"></span>
+        <span>One email at launch</span>
+        <span class="dot"></span>
+        <span>Unsubscribe anytime</span>
+      </div>
+    </div>
+
+    <div class="hero-phones">
+      <img class="h-left" src="../assets/screenshots/landingPage1/left.png" alt="Slough App on iPhone — notifications">
+      <img class="h-mid" src="../assets/screenshots/landingPage1/middle.png" alt="Slough App on iPhone — home screen">
+      <img class="h-right" src="../assets/screenshots/landingPage1/right.png" alt="Slough App on iPhone — profile">
+    </div>
+  </header>
+
+  <!-- PERKS -->
+  <section class="perks-section">
+    <div class="perks-head reveal">
+      <span class="eyebrow">Why join early</span>
+      <h2>First in line.</h2>
+      <p>Sign up now to be one of the first people inside Slough App when it launches.</p>
+    </div>
+
+    <div class="perks-grid">
+      <div class="perk-card reveal">
+        <div class="perk-icon icon-yellow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
+        </div>
+        <h3>Day-one access</h3>
+        <p>We'll email you the second the app is live on the App Store and Google Play.</p>
+      </div>
+      <div class="perk-card reveal">
+        <div class="perk-icon icon-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <h3>Founding member status</h3>
+        <p>Want a founding-member badge inside the app? It's reserved for people who help us shape the app before launch.</p>
+        <a href="/become-a-tester" class="perk-cta">Become a tester</a>
+      </div>
+      <div class="perk-card reveal">
+        <div class="perk-icon icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Built for Slough</h3>
+        <p>Made by locals, for locals. Be first in town to use the app that knows Slough inside out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="about">
+    <div class="foot-inner">
+      <div class="foot-col">
+        <h4>Slough App</h4>
+        <div class="foot-links">
+          <a href="/">Home</a>
+          <a href="/get-slough-app">Get the App</a>
+          <a href="/become-a-tester">Become a Tester</a>
+          <a href="/launch-party">Get Notified</a>
+          <a href="/contact">Help &amp; Contact</a>
+          <a href="/child-safety">Child Safety</a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <p class="foot-contact">
+          <strong>Email:</strong> support@slough.app<br>
+          <strong>Available:</strong> Monday – Friday, 9:00 a.m. – 6:00 p.m. GMT<br>
+          <strong>Location:</strong> Slough, Berkshire, United Kingdom
+        </p>
+        <div class="foot-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <div class="foot-brand">
+          <img src="../logo.png" alt="">
+          <span>Slough App</span>
+        </div>
+        <p class="foot-tag">Made for our town.</p>
+        <a href="/become-a-tester" class="foot-cta">Become a Tester</a>
+      </div>
+    </div>
+    <p class="foot-bottom">&copy; 2026 Slough App. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
