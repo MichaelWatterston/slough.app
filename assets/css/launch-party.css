@@ -1,0 +1,220 @@
+/* HERO */
+.hero {
+  padding: 64px 24px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1100px;
+  height: 1100px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(225, 225, 32, 0.16), transparent 45%),
+    radial-gradient(circle at 65% 35%, rgba(221, 38, 57, 0.14), transparent 45%),
+    radial-gradient(circle at 60% 70%, rgba(178, 28, 223, 0.18), transparent 45%),
+    radial-gradient(circle at 35% 65%, rgba(47, 34, 225, 0.14), transparent 45%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 70%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.hero-logo {
+  width: clamp(72px, 11vw, 128px);
+  height: clamp(72px, 11vw, 128px);
+  border-radius: clamp(16px, 2vw, 26px);
+  flex-shrink: 0;
+  box-shadow: 0 12px 32px rgba(47, 34, 225, 0.22);
+}
+.hero h1 {
+  font-size: clamp(2rem, 5.4vw, 3.75rem);
+  font-weight: 700;
+  color: var(--c-blue);
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.05;
+  text-align: left;
+}
+.hero-lede {
+  max-width: 580px;
+  margin: 0 auto 8px;
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* MAILCHIMP FORM */
+.signup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 36px auto 16px;
+  max-width: 480px;
+  text-align: left;
+  position: relative;
+}
+.signup-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.signup input[type="text"],
+.signup input[type="email"] {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.signup input::placeholder { color: #9ca3af; }
+.signup input:focus {
+  border-color: rgba(178, 28, 223, 0.7);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(178, 28, 223, 0.18);
+}
+.signup button {
+  width: 100%;
+  background: var(--brand-gradient);
+  background-size: 200% 200%;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-position 0.4s, transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(178, 28, 223, 0.25);
+}
+.signup button:hover { background-position: 100% 100%; transform: translateY(-1px); box-shadow: 0 8px 22px rgba(178, 28, 223, 0.32); }
+.signup button:active { transform: scale(0.98); }
+.hp-field { position: absolute; left: -5000px; opacity: 0; pointer-events: none; }
+@media (min-width: 560px) {
+  .signup-fields { flex-direction: row; }
+  .signup-fields > * { flex: 1; min-width: 0; }
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 14px;
+}
+.meta-row .dot { width: 4px; height: 4px; background: #c7c7d6; border-radius: 50%; }
+
+/* HERO PHONES (overlapping mockups) */
+.hero-phones {
+  position: relative;
+  max-width: 1600px;
+  width: 100%;
+  margin: 56px auto 0;
+  display: grid;
+}
+@media (min-width: 880px) { .hero-phones { max-width: 1200px; } }
+@media (min-width: 1280px) { .hero-phones { max-width: 1300px; } }
+.hero-phones img {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.hero-phones .h-left { z-index: 1; }
+.hero-phones .h-mid { z-index: 2; }
+.hero-phones .h-right { z-index: 1; }
+
+/* PERKS */
+.perks-section { padding: 80px 24px; }
+.perks-head { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+.perks-head p { font-size: 1.05rem; }
+.perks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.perk-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  transition: all 0.3s;
+  box-shadow: 0 1px 2px rgba(19, 19, 70, 0.04);
+}
+.perk-card:hover {
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(19, 19, 70, 0.12);
+  background-image: linear-gradient(#ffffff, #ffffff), var(--brand-gradient);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.perk-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.perk-icon svg { width: 22px; height: 22px; }
+.perk-card p { font-size: 0.95rem; }
+.perk-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--c-blue);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.perk-cta:hover { background: #1f15c4; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(47, 34, 225, 0.25); }
+
+/* RESPONSIVE */
+@media (min-width: 720px) {
+  .perks-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* MOTION */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title { animation: fadeInUp 0.9s 0.1s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero-lede { animation: fadeInUp 0.9s 0.3s cubic-bezier(.2,.7,.2,1) backwards; }
+  .signup { animation: fadeInUp 0.9s 0.45s cubic-bezier(.2,.7,.2,1) backwards; }
+  .meta-row { animation: fadeInUp 0.9s 0.6s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero-phones { animation: fadeInUp 1s 0.75s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero h1 .accent { background-size: 200% 200%; animation: gradientShift 8s ease infinite; }
+  .hero::before { animation: heroBlob 9s ease-in-out infinite; }
+
+  .perks-grid > .reveal:nth-child(1) { transition-delay: 0.05s; }
+  .perks-grid > .reveal:nth-child(2) { transition-delay: 0.15s; }
+  .perks-grid > .reveal:nth-child(3) { transition-delay: 0.25s; }
+}
