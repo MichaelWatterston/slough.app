@@ -86,6 +86,19 @@ body {
   color: #6b7280;
   font-size: 0.9rem;
 }
+.footer-links {
+  margin-top: 12px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; }
 .last-updated {
   color: #9ca3af;
   margin-bottom: 24px;
