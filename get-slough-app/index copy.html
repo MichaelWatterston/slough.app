@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REX65RTK9G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-REX65RTK9G');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Get Slough App — the community app made for Slough. See what's happening, buy and sell locally, find jobs nearby, and join groups for our town.">
@@ -10,417 +19,9 @@
   <meta property="og:image" content="/logo.png" />
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../assets/css/get-slough-app.css">
   <title>Get Slough App — The community app for Slough</title>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    :root {
-      --c-yellow: #e1e120;
-      --c-red: #dd2639;
-      --c-purple: #b21cdf;
-      --c-blue: #2f22e1;
-      --brand-gradient: linear-gradient(135deg, #e1e120 0%, #dd2639 33%, #b21cdf 66%, #2f22e1 100%);
-      --ink: #131346;
-      --ink-2: #2c2c4a;
-      --muted: #6b6b80;
-      --line: #ececf1;
-      --soft: #f7f7fa;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #ffffff;
-      color: var(--ink-2);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    h1, h2, h3 { color: var(--ink); letter-spacing: -0.02em; line-height: 1.05; font-weight: 700; }
-    p { color: var(--muted); }
-
-    /* NAV */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: saturate(180%) blur(14px);
-      -webkit-backdrop-filter: saturate(180%) blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 24px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 24px;
-    }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--c-blue); font-size: 1.25rem; letter-spacing: -0.02em; }
-    .brand img { width: 28px; height: 28px; border-radius: 6px; }
-    .nav-links {
-      display: none;
-      gap: 36px;
-      font-size: 0.78rem;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: var(--ink-2);
-      font-weight: 600;
-    }
-    .nav-links a { transition: color 0.2s; position: relative; }
-    .nav-links a.active { color: var(--ink); }
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--ink);
-    }
-    .nav-links a:hover { color: var(--c-blue); }
-    .nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--ink);
-      color: var(--ink);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      transition: background 0.2s, color 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover { background: var(--ink); color: #fff; transform: translateY(-1px); }
-    .nav-burger {
-      width: 28px;
-      height: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .nav-burger span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
-    @media (min-width: 880px) {
-      .nav-links { display: flex; }
-    }
-
-    /* HERO */
-    .hero {
-      padding: 64px 24px 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 24px;
-      text-align: left;
-      flex-wrap: nowrap;
-    }
-    .hero-logo {
-      width: clamp(76px, 13.4vw, 160px);
-      height: clamp(76px, 13.4vw, 160px);
-      border-radius: clamp(16px, 2.4vw, 30px);
-      flex-shrink: 0;
-      margin: 0;
-      box-shadow: 0 12px 32px rgba(47, 34, 225, 0.22);
-    }
-    .hero h1 {
-      font-size: clamp(2.25rem, 6.4vw, 4.75rem);
-      font-weight: 700;
-      color: var(--c-blue);
-      letter-spacing: -0.03em;
-      margin: 0;
-      line-height: 1.05;
-      text-align: left;
-    }
-    .hero h1 .accent {
-      background: var(--brand-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      white-space: nowrap;
-    }
-    .hero-lede {
-      max-width: 640px;
-      margin: 0 auto 12px;
-      font-size: 1.1rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-    .hero-phones {
-      position: relative;
-      max-width: 1600px;
-      width: 100%;
-      margin: 40px auto 0;
-      display: grid;
-    }
-    @media (min-width: 880px) {
-      .hero-phones { max-width: 1200px; }
-    }
-    @media (min-width: 1280px) {
-      .hero-phones { max-width: 1300px; }
-    }
-    .hero-phones img {
-      grid-column: 1;
-      grid-row: 1;
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .hero-phones .h-left { z-index: 1; }
-    .hero-phones .h-mid { z-index: 2; }
-    .hero-phones .h-right { z-index: 1; }
-
-    /* SECTION (feature) */
-    .feat {
-      padding: 96px 24px;
-      border-top: 1px solid var(--line);
-    }
-    .feat-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .feat-text-left, .feat-text-right { max-width: 320px; }
-    .feat-text-left { justify-self: start; }
-    .feat-text-right { justify-self: end; text-align: right; }
-    .feat h2 {
-      font-size: clamp(1.5rem, 2.4vw, 2rem);
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.15;
-    }
-    .feat-text-right p, .feat-text-left p { font-size: 1.02rem; color: var(--muted); line-height: 1.5; }
-    .feat-phone-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .feat-phone {
-      position: relative;
-      width: 280px;
-      aspect-ratio: 9 / 19.5;
-      border-radius: 42px;
-      background: #0a0a0a;
-      padding: 7px;
-      box-shadow:
-        0 24px 48px rgba(19, 19, 70, 0.16),
-        0 0 0 2px #1d1d1f,
-        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-    }
-    .feat-phone::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 42px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.04));
-      pointer-events: none;
-    }
-    .feat-phone img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 34px;
-    }
-    @media (min-width: 880px) {
-      .feat-inner { grid-template-columns: 1fr auto 1fr; gap: 64px; }
-    }
-
-    /* DOWNLOAD CTA */
-    .download {
-      padding: 96px 24px;
-      text-align: center;
-      border-top: 1px solid var(--line);
-    }
-    .download h2 {
-      max-width: 880px;
-      margin: 0 auto 36px;
-      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-      color: var(--c-blue);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #0a0a0a;
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 12px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .badge:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10, 10, 30, 0.22); }
-    .badge svg { width: 24px; height: 24px; flex-shrink: 0; fill: #fff; }
-    .badge-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
-    .badge-small { font-size: 0.65rem; color: #d1d5db; text-transform: uppercase; letter-spacing: 0.6px; }
-    .badge-big { font-size: 1rem; font-weight: 600; color: #fff; }
-    .qr-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 18px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px 18px 14px 14px;
-      background: #fff;
-    }
-    .qr-card img { width: 64px; height: 64px; }
-    .qr-card span { color: var(--ink-2); font-size: 0.9rem; max-width: 220px; line-height: 1.35; text-align: left; }
-
-    /* BANNER CTA */
-    .banner {
-      padding: 64px 24px 0;
-    }
-    .banner-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      min-height: 240px;
-      display: flex;
-      align-items: center;
-      padding: 36px 32px;
-      background:
-        linear-gradient(135deg, rgba(19, 19, 70, 0.78) 0%, rgba(47, 34, 225, 0.65) 50%, rgba(178, 28, 223, 0.55) 100%),
-        var(--brand-gradient);
-      background-size: 200% 200%, 200% 200%;
-      color: #fff;
-    }
-    .banner-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      width: 100%;
-      align-items: center;
-    }
-    .banner-left { display: flex; align-items: center; gap: 18px; }
-    .banner-logo {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 8px;
-      backdrop-filter: blur(8px);
-    }
-    .banner-logo img { width: 100%; height: 100%; border-radius: 10px; }
-    .banner-copy h3 { color: #fff; font-size: 1.5rem; margin-bottom: 4px; }
-    .banner-copy p { color: rgba(255, 255, 255, 0.85); font-size: 0.95rem; }
-    .banner-badges { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start; }
-    @media (min-width: 720px) {
-      .banner-grid { grid-template-columns: 1fr auto; }
-      .banner-badges { justify-content: flex-end; }
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 64px 24px;
-    }
-    .foot-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .foot-col h4 {
-      font-size: 0.72rem;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      color: var(--ink-2);
-      margin-bottom: 14px;
-      font-weight: 700;
-    }
-    .foot-links { display: flex; flex-direction: column; gap: 10px; }
-    .foot-links a { color: var(--ink); font-size: 1rem; transition: color 0.2s; }
-    .foot-links a:hover { color: var(--c-blue); }
-    .foot-contact { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
-    .foot-contact strong { color: var(--ink); font-weight: 600; }
-    .foot-brand { font-size: 1.4rem; font-weight: 700; color: var(--c-blue); letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
-    .foot-brand img { width: 28px; height: 28px; border-radius: 6px; }
-    .foot-tag { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
-    .foot-cta {
-      display: inline-flex;
-      align-items: center;
-      padding: 10px 20px;
-      border-radius: 999px;
-      background: var(--c-blue);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      margin-top: 20px;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .foot-cta:hover { background: #1f15c4; transform: translateY(-1px); }
-    .foot-social { display: flex; gap: 14px; margin-top: 12px; }
-    .foot-social a {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--soft);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--ink-2);
-      transition: background 0.2s, color 0.2s;
-    }
-    .foot-social a:hover { background: var(--c-blue); color: #fff; }
-    .foot-social svg { width: 14px; height: 14px; }
-    .foot-bottom {
-      max-width: 1200px;
-      margin: 32px auto 0;
-      padding: 24px 24px 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.82rem;
-      text-align: center;
-    }
-    @media (min-width: 720px) {
-      .foot-inner { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 980px) {
-      .foot-inner { grid-template-columns: 1fr 1.2fr 1fr; gap: 48px; align-items: start; }
-    }
-
-    /* MOTION */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1); }
-      .reveal.in { opacity: 1; transform: translateY(0); }
-
-      .hero-title { animation: fadeInUp 0.9s 0.1s cubic-bezier(.2,.7,.2,1) backwards; }
-      .hero-lede { animation: fadeInUp 0.9s 0.3s cubic-bezier(.2,.7,.2,1) backwards; }
-      .hero-phones { animation: fadeInUp 1s 0.45s cubic-bezier(.2,.7,.2,1) backwards; }
-      .hero h1 .accent { background-size: 200% 200%; animation: gradientShift 8s ease infinite; }
-    }
-  </style>
 </head>
 <body>
 
@@ -433,8 +34,8 @@
       </a>
       <div class="nav-links">
         <a href="/">Home</a>
-        <a href="#" class="active">Get the App</a>
-        <a href="#about">About</a>
+        <a href="/get-slough-app" class="active">Get the App</a>
+        <a href="/become-a-tester">Become a Tester</a>
       </div>
       <div class="nav-right">
         <a href="/become-a-tester" class="nav-cta">Become a Tester</a>
@@ -462,88 +63,212 @@
     </div>
   </header>
 
-  <!-- FEATURE 1 -->
-  <section class="feat">
-    <div class="feat-inner">
-      <div class="feat-text-left reveal">
-        <h2>See what's happening on your street</h2>
+  <!-- TRUST STRIP -->
+  <div class="strip">
+    <div class="strip-inner">
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Local to Slough</div>
       </div>
-      <div class="feat-phone-wrap reveal">
-        <div class="feat-phone"><img src="../assets/screenshots/screenshot4.png" alt="Slough App feed"></div>
+      <div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Active moderation</div>
       </div>
-      <div class="feat-text-right reveal">
-        <p>Real-time posts, photos and videos from neighbours across the town. No noise from anywhere else — just Slough.</p>
+      <div>
+        <div class="stat-num">Free</div>
+        <div class="stat-label">To join &amp; use</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <section id="why" class="home-section">
+    <div class="home-wrap">
+      <div class="why-head reveal">
+        <span class="eyebrow">Why Slough App</span>
+        <h2>Everything local, nothing else.</h2>
+        <p>Generic community apps spread content across the country. We keep every post, listing, job and group inside the town — so what you see is actually relevant.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>Discover</h3>
+          <p>Slough's own feed, built around our streets, schools, shops and neighbours.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3>Buy &amp; Sell</h3>
+          <p>Trade with local people. List items in seconds, message buyers safely, and collect nearby.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3>Find Jobs</h3>
+          <p>Roles close to home. Browse jobs from Slough employers and skip the commute.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Join Groups</h3>
+          <p>Match your interests — sport, families, food, faith, parenting, hobbies and more across 14 categories.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE 2 -->
-  <section class="feat">
-    <div class="feat-inner">
-      <div class="feat-text-left reveal">
-        <h2>Buy and sell with people nearby</h2>
+  <!-- FEATURE SHOWCASE -->
+  <section class="home-section" style="padding-top: 0;">
+    <div class="home-wrap">
+      <div class="show reveal">
+        <div class="show-text">
+          <span class="eyebrow">A real-time local feed</span>
+          <h2>See what's happening on your street.</h2>
+          <p>Post updates, photos and videos to a feed that only Slough sees. Reply, react, and stay in the loop with neighbours — without the noise from every other town in the country.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Real-time posts, photos and videos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Notifications for replies, messages and invites</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Profiles, reputation, and connections</li>
+          </ul>
+        </div>
+        <div class="show-img">
+          <div class="show-phone"><img src="../assets/screenshots/screenshot4.png" alt="Slough App feed"></div>
+        </div>
       </div>
-      <div class="feat-phone-wrap reveal">
-        <div class="feat-phone"><img src="../assets/screenshots/screenshot3.png" alt="Slough App marketplace"></div>
+
+      <div class="show flip reveal">
+        <div class="show-text">
+          <span class="eyebrow">Hyper-local marketplace</span>
+          <h2>Buy and sell with people nearby.</h2>
+          <p>Skip the postage, skip the strangers from miles away. List items in seconds, chat safely in-app, and collect from somewhere you already know.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>List in under 30 seconds</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Safe in-app messaging</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mark as sold, manage offers</li>
+          </ul>
+        </div>
+        <div class="show-img">
+          <div class="show-phone"><img src="../assets/screenshots/screenshot3.png" alt="Slough App marketplace listing"></div>
+        </div>
       </div>
-      <div class="feat-text-right reveal">
-        <p>Skip the postage and the strangers from miles away. List in seconds, message safely in-app, and collect somewhere you already know.</p>
+
+      <div class="show reveal">
+        <div class="show-text">
+          <span class="eyebrow">Jobs &amp; groups</span>
+          <h2>Work close to home. Meet your people.</h2>
+          <p>Find roles posted by Slough employers and side gigs from local residents. Then join groups across 14 categories — sport, families, food, faith, parenting, hobbies and more.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Local jobs and side gigs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Interest-based group chats</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Events, families, faith, sport &amp; more</li>
+          </ul>
+        </div>
+        <div class="show-img">
+          <div class="show-phone"><img src="../assets/screenshots/screenshot6.png" alt="Slough App community groups"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE 3 -->
-  <section class="feat">
-    <div class="feat-inner">
-      <div class="feat-text-left reveal">
-        <h2>Find work close to home</h2>
-      </div>
-      <div class="feat-phone-wrap reveal">
-        <div class="feat-phone"><img src="../assets/screenshots/screenshot2.png" alt="Slough App jobs"></div>
-      </div>
-      <div class="feat-text-right reveal">
-        <p>Browse roles from Slough employers and side gigs from local residents. Apply directly in the app and skip the commute.</p>
+  <!-- BUILT FOR SLOUGH BANNER -->
+  <section class="home-section" style="padding-top: 0;">
+    <div class="home-wrap">
+      <div class="built-banner reveal">
+        <span class="eyebrow" style="color: #fff; background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.32);">Built for Slough</span>
+        <h2 style="color: #fff;">No postcode filtering. No noise from other cities. Just Slough.</h2>
+        <p style="color: #fff;">Every post, listing, job and group lives inside the town. So when something opens up, gets sold, or fills up — you actually hear about it in time.</p>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE 4 -->
-  <section class="feat">
-    <div class="feat-inner">
-      <div class="feat-text-left reveal">
-        <h2>Join groups and meet your people</h2>
+  <!-- SAFETY -->
+  <section class="home-section" style="padding-top: 0;">
+    <div class="home-wrap">
+      <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+        <span class="eyebrow">Safe by design</span>
+        <h2>You're in control.</h2>
+        <p>We actively moderate content and respond quickly to reports. You always have the final say over what you see.</p>
       </div>
-      <div class="feat-phone-wrap reveal">
-        <div class="feat-phone"><img src="../assets/screenshots/screenshot6.png" alt="Slough App groups"></div>
-      </div>
-      <div class="feat-text-right reveal">
-        <p>Fourteen interest categories — sport, families, food, faith, parenting, hobbies and more. Find your tribe in Slough and start showing up.</p>
+
+      <div class="safety-grid">
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          <div>
+            <h3>Report &amp; block</h3>
+            <p>Flag any post or message. Block users instantly so they can't reach you.</p>
+          </div>
+        </div>
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+          <div>
+            <h3>Hide content</h3>
+            <p>Mute keywords, topics or accounts you'd rather not see.</p>
+          </div>
+        </div>
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          <div>
+            <h3>Delete your data</h3>
+            <p>Remove your account and data at any time, no questions asked.</p>
+          </div>
+        </div>
+        <div class="safety-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div>
+            <h3>Active moderation</h3>
+            <p>A real team responds to reports quickly to keep the community safe.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- DOWNLOAD CTA -->
-  <section class="download" id="download">
-    <h2>Slough, in your pocket. The community app made for our town. Download to discover what's happening, buy and sell, find jobs, and join groups.</h2>
-    <div class="badges">
-      <a href="https://play.google.com/store/apps/details?id=com.anonymous.SloughApp" class="badge" aria-label="Get it on Google Play">
-        <svg viewBox="0 0 32 32"><path d="M4.284 3.456c-.36.384-.564.972-.564 1.716v21.66c0 .744.204 1.332.564 1.716l.09.084L16.5 16.512v-.024L4.374 4.368l-.09.088z" fill="#4285F4"/><path d="M20.544 20.556L16.5 16.512v-.024l4.044-4.044.09.054 4.794 2.724c1.368.78 1.368 2.052 0 2.832l-4.794 2.724-.09-.222z" fill="#FBBC04"/><path d="M20.634 20.778L16.5 16.5 4.284 28.548c.45.48 1.194.54 2.034.06l14.316-7.83" fill="#34A853"/><path d="M20.634 12.222L6.318 4.392c-.84-.48-1.584-.42-2.034.06L16.5 16.5l4.134-4.278z" fill="#EA4335"/></svg>
-        <span class="badge-text">
-          <span class="badge-small">Get it on</span>
-          <span class="badge-big">Google Play</span>
-        </span>
-      </a>
-      <a href="https://apps.apple.com/app/YOUR_APP_ID" class="badge" aria-label="Download on the App Store">
-        <svg viewBox="0 0 32 32" fill="currentColor"><path d="M22.154 16.924c-.03-3.072 2.508-4.548 2.622-4.62-1.428-2.088-3.654-2.376-4.446-2.41-1.89-.192-3.69 1.114-4.65 1.114-.96 0-2.442-1.086-4.014-1.056-2.064.03-3.966 1.2-5.028 3.048-2.142 3.72-.546 9.228 1.542 12.246 1.02 1.476 2.238 3.138 3.84 3.078 1.536-.06 2.118-1.002 3.978-1.002 1.86 0 2.382.996 4.014.966 1.662-.03 2.718-1.506 3.732-2.988 1.176-1.716 1.662-3.378 1.692-3.462-.036-.018-3.246-1.248-3.282-4.914z"/><path d="M19.104 7.654c.852-1.032 1.428-2.466 1.272-3.894-1.23.048-2.718.822-3.6 1.854-.792.918-1.482 2.388-1.296 3.798 1.374.108 2.772-.696 3.624-1.758z"/></svg>
-        <span class="badge-text">
-          <span class="badge-small">Download on the</span>
-          <span class="badge-big">App Store</span>
-        </span>
-      </a>
+  <!-- PREMIUM -->
+  <section class="home-section" style="padding-top: 0;">
+    <div class="home-wrap">
+      <div class="premium reveal">
+        <div>
+          <span class="premium-tag">Optional</span>
+          <h2>Slough App Premium</h2>
+          <p>Upgrade for additional features. Cancel anytime in your device settings. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period.</p>
+          <small>Premium is entirely optional — every essential feature in Slough App stays free, forever.</small>
+        </div>
+        <a href="#download" class="premium-cta">
+          Get the app
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
-    <div class="qr-card">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;margin=0&amp;data=https%3A%2F%2Fslough.app" alt="QR code linking to slough.app">
-      <span>Hold your device camera up to the QR code to download the app.</span>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="download" class="final">
+    <div class="home-wrap">
+      <span class="eyebrow reveal">Download for free</span>
+      <h2 class="reveal">Join your neighbours.</h2>
+      <p class="reveal">The community app made for Slough. Get it on iOS or Android — it takes about 30 seconds.</p>
+      <div class="badges-row reveal">
+        <a href="https://apps.apple.com/app/YOUR_APP_ID" class="store-badge">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M22.154 16.924c-.03-3.072 2.508-4.548 2.622-4.62-1.428-2.088-3.654-2.376-4.446-2.41-1.89-.192-3.69 1.114-4.65 1.114-.96 0-2.442-1.086-4.014-1.056-2.064.03-3.966 1.2-5.028 3.048-2.142 3.72-.546 9.228 1.542 12.246 1.02 1.476 2.238 3.138 3.84 3.078 1.536-.06 2.118-1.002 3.978-1.002 1.86 0 2.382.996 4.014.966 1.662-.03 2.718-1.506 3.732-2.988 1.176-1.716 1.662-3.378 1.692-3.462-.036-.018-3.246-1.248-3.282-4.914z"/><path d="M19.104 7.654c.852-1.032 1.428-2.466 1.272-3.894-1.23.048-2.718.822-3.6 1.854-.792.918-1.482 2.388-1.296 3.798 1.374.108 2.772-.696 3.624-1.758z"/></svg>
+          <span class="store-badge-text">
+            <span class="store-badge-small">Download on the</span>
+            <span class="store-badge-big">App Store</span>
+          </span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.anonymous.SloughApp" class="store-badge">
+          <svg viewBox="0 0 32 32"><path d="M4.284 3.456c-.36.384-.564.972-.564 1.716v21.66c0 .744.204 1.332.564 1.716l.09.084L16.5 16.512v-.024L4.374 4.368l-.09.088z" fill="#4285F4"/><path d="M20.544 20.556L16.5 16.512v-.024l4.044-4.044.09.054 4.794 2.724c1.368.78 1.368 2.052 0 2.832l-4.794 2.724-.09-.222z" fill="#FBBC04"/><path d="M20.634 20.778L16.5 16.5 4.284 28.548c.45.48 1.194.54 2.034.06l14.316-7.83" fill="#34A853"/><path d="M20.634 12.222L6.318 4.392c-.84-.48-1.584-.42-2.034.06L16.5 16.5l4.134-4.278z" fill="#EA4335"/></svg>
+          <span class="store-badge-text">
+            <span class="store-badge-small">Get it on</span>
+            <span class="store-badge-big">Google Play</span>
+          </span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -589,13 +314,14 @@
           <a href="/become-a-tester">Become a Tester</a>
           <a href="/contact">Help &amp; Contact</a>
           <a href="/child-safety">Child Safety</a>
+          <a href="/terms">Terms</a>
+          <a href="/privacy">Privacy</a>
         </div>
       </div>
 
       <div class="foot-col">
         <h4>Contact</h4>
         <p class="foot-contact">
-          <strong>Email:</strong> support@slough.app<br>
           <strong>Available:</strong> Monday – Friday, 9:00 a.m. – 6:00 p.m. GMT<br>
           <strong>Location:</strong> Slough, Berkshire, United Kingdom
         </p>
@@ -625,6 +351,7 @@
   </footer>
 
   <script>
+    // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -634,6 +361,16 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Cursor glow on why-cards
+    document.querySelectorAll('.why-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--x', `${e.clientX - r.left}px`);
+        card.style.setProperty('--y', `${e.clientY - r.top}px`);
+      });
+    });
   </script>
+  <script src="../assets/js/nav.js" defer></script>
 </body>
 </html>
