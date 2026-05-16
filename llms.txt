@@ -1,0 +1,31 @@
+# Slough App
+
+> Slough App is a community app built for the town of Slough, UK. It connects locals through a feed, marketplace, jobs board, and groups. The app is in pre-launch — currently recruiting alpha testers ahead of a public release on iOS and Android.
+
+Slough App is made by locals, for locals. The site at https://www.slough.app is a marketing and signup site; the app itself is mobile-only and is launching on the Apple App Store and Google Play.
+
+## Key pages
+
+- [Home](https://www.slough.app/): Overview of Slough App and email signup to be notified at launch.
+- [Get the App](https://www.slough.app/get-slough-app/): Pre-launch landing page where users can register to be notified when the app goes live on iOS and Android.
+- [Become a Tester](https://www.slough.app/become-a-tester/): Alpha tester signup. Testers get early access, a direct feedback channel to the team, and a contributor credit at launch.
+- [Launch Party / Get Notified](https://www.slough.app/launch-party/): Email signup form for launch-day notifications.
+- [Contact](https://www.slough.app/contact/): Support and contact options. General support: support@slough.app.
+
+## Policies
+
+- [Privacy Policy](https://www.slough.app/privacy/): How Slough App handles user data.
+- [Terms of Service & EULA](https://www.slough.app/terms/): Terms of use for the app and website.
+- [Child Safety Standards](https://www.slough.app/child-safety/): Slough App's standards against child sexual abuse and exploitation (CSAE), in line with Apple and Google requirements.
+
+## About
+
+- Audience: Residents of Slough, Berkshire, UK and surrounding areas.
+- Platforms: iOS (App Store) and Android (Google Play).
+- Status: Pre-launch, alpha testing.
+- Core features: Local feed, marketplace, jobs board, groups, messaging.
+
+## Optional
+
+- [Sitemap](https://www.slough.app/sitemap.xml): XML sitemap of indexable pages.
+- [Robots](https://www.slough.app/robots.txt): Crawler rules.

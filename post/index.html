@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REX65RTK9G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-REX65RTK9G');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,follow">
   <meta property="og:title" content="View on SloughApp" />
   <meta property="og:description" content="Open this post in SloughApp" />
-  <title>SloughApp - View Post</title>
-  <style>
-    body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #121212; color: #fff; text-align: center; }
-    .container { padding: 20px; }
-    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    p { color: #aaa; }
-    a { color: #60a5fa; text-decoration: none; font-weight: 600; }
-  </style>
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <title>Slough App — View Post</title>
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../assets/css/post.css">
   <script>
     var path = window.location.pathname;
     var postId = path.split('/post/')[1];
@@ -22,10 +29,38 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <h1>Opening SloughApp...</h1>
-    <p>If the app didn't open, <a href="sloughapp://post/">tap here to try again</a></p>
-    <p style="margin-top: 20px; font-size: 0.9rem;">Don't have the app? Download it from the App Store or Google Play.</p>
-  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand">
+        <img src="../logo.png" alt="">
+        <span>Slough App</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/get-slough-app/">Get the App</a>
+        <a href="/become-a-tester/">Become a Tester</a>
+      </div>
+      <div class="nav-right">
+        <a href="/become-a-tester/" class="nav-cta">Become a Tester</a>
+        <div class="nav-burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="post-bridge">
+    <div class="post-bridge-inner">
+      <img class="post-bridge-logo" src="../logo.png" alt="">
+      <h1>Opening Slough App…</h1>
+      <p>If the app didn't open, tap below to try again.</p>
+      <a class="primary" href="sloughapp://post/">Open in Slough App</a>
+      <p class="small">Don't have the app? <a href="/get-slough-app/">Download it here</a>.</p>
+    </div>
+  </main>
+
+  <script src="../assets/js/nav.js" defer></script>
 </body>
 </html>
