@@ -1,5 +1,68 @@
-body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #121212; color: #fff; text-align: center; }
-.container { padding: 20px; }
-h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-p { color: #aaa; }
-a { color: #60a5fa; text-decoration: none; font-weight: 600; }
+/* /post bridge page — light, centered, brand-styled */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.post-bridge {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.post-bridge::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: var(--brand-gradient);
+  filter: blur(160px);
+  opacity: 0.12;
+  z-index: -1;
+  border-radius: 50%;
+}
+.post-bridge-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+.post-bridge-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  margin: 0 auto 20px;
+}
+.post-bridge h1 {
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  margin-bottom: 12px;
+}
+.post-bridge p {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.post-bridge a.primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--c-blue);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-top: 16px;
+  transition: background 0.2s, transform 0.2s;
+}
+.post-bridge a.primary:hover { background: #1f15c4; transform: translateY(-1px); }
+.post-bridge .small {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
