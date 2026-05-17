@@ -53,8 +53,28 @@
       <span class="eyebrow">Launching soon · Slough</span>
       <div class="hero-title">
         <img src="logo.png" alt="Slough App logo" class="hero-logo">
-        <h1>Slough App is coming.<br><span class="accent">Be first to know.</span></h1>
+        <h1>Slough App is coming.<br><span class="accent">Be first to know.</span>  👀 🥵</h1>
       </div>
+
+      <div class="countdown" aria-label="Time until launch" data-launch="2026-06-01T00:00:00+01:00">
+        <div class="countdown-unit">
+          <span class="countdown-num" data-days>00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" data-hours>00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" data-mins>00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" data-secs>00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+
       <p class="hero-lede">
         Slough App is launching soon. Drop your email and we'll let you know the moment it goes live on the App Store and Google Play.
       </p>
@@ -171,6 +191,33 @@
   </footer>
 
   <script>
+    // Countdown to launch
+    (function () {
+      const root = document.querySelector('.countdown');
+      if (!root) return;
+      const target = new Date(root.dataset.launch).getTime();
+      const dEl = root.querySelector('[data-days]');
+      const hEl = root.querySelector('[data-hours]');
+      const mEl = root.querySelector('[data-mins]');
+      const sEl = root.querySelector('[data-secs]');
+      const pad = (n) => (n < 10 ? '0' + n : '' + n);
+      function tick() {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+          root.classList.add('is-launched');
+          clearInterval(timer);
+          return;
+        }
+        dEl.textContent = pad(Math.floor(diff / 86400000));
+        hEl.textContent = pad(Math.floor((diff / 3600000) % 24));
+        mEl.textContent = pad(Math.floor((diff / 60000) % 60));
+        sEl.textContent = pad(Math.floor((diff / 1000) % 60));
+      }
+      tick();
+      const timer = setInterval(tick, 1000);
+    })();
+
     // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
