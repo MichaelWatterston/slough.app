@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REX65RTK9G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-REX65RTK9G');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:title" content="View on SloughApp" />
+  <meta property="og:description" content="Open this profile in SloughApp" />
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <title>Slough App — View Profile</title>
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../assets/css/post.css">
+  <script>
+    var path = window.location.pathname;
+    var profileId = path.split('/userProfile/')[1];
+    if (profileId) {
+      window.location = 'sloughapp://userProfile/' + profileId;
+    }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand">
+        <img src="../logo.png" alt="">
+        <span>Slough App</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/get-slough-app/">Get the App</a>
+        <a href="/become-a-tester/">Become a Tester</a>
+      </div>
+      <div class="nav-right">
+        <a href="/become-a-tester/" class="nav-cta">Become a Tester</a>
+        <div class="nav-burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="post-bridge">
+    <div class="post-bridge-inner">
+      <img class="post-bridge-logo" src="../logo.png" alt="">
+      <h1>Opening Slough App…</h1>
+      <p>If the app didn't open, tap below to try again.</p>
+      <a class="primary" href="sloughapp://userProfile/">Open in Slough App</a>
+      <p class="small">Don't have the app? <a href="/get-slough-app/">Download it here</a>.</p>
+    </div>
+  </main>
+
+  <script src="../assets/js/nav.js" defer></script>
+</body>
+</html>

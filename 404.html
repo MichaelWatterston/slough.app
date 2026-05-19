@@ -52,11 +52,11 @@
       <a class="btn btn-open" href="/">Back to home</a>
     </div>
 
-    <!-- Shown only when this is a /post/* deep-link bridge -->
+    <!-- Shown only when this is a /post/* or /userProfile/* deep-link bridge -->
     <div class="card hidden" id="post-bridge-card">
       <img class="card-logo" src="logo.png" alt="">
       <h1>Slough App</h1>
-      <p class="subtitle">Someone shared a post with you.</p>
+      <p class="subtitle" id="bridge-subtitle">Someone shared a post with you.</p>
       <a id="open-btn" class="btn btn-open" href="#">Open in Slough App</a>
       <a class="btn btn-ios" href="https://apps.apple.com/app/sloughapp/idXXXXXXXXX">Download on the App Store</a>
       <a class="btn btn-android" href="https://play.google.com/store/apps/details?id=com.sloughapp.app">Get it on Google Play</a>
@@ -66,11 +66,15 @@
 
   <script>
     var path = window.location.pathname;
-    var m = path.match(/^\/post\/([^/?#]+)/);
+    var m = path.match(/^\/(post|userProfile)\/([^/?#]+)/);
     if (m) {
       document.getElementById('not-found-card').classList.add('hidden');
       document.getElementById('post-bridge-card').classList.remove('hidden');
-      var deepLink = 'sloughapp://post/' + m[1];
+      document.getElementById('bridge-subtitle').textContent =
+        m[1] === 'userProfile'
+          ? 'Someone shared a profile with you.'
+          : 'Someone shared a post with you.';
+      var deepLink = 'sloughapp://' + m[1] + '/' + m[2];
       document.getElementById('open-btn').href = deepLink;
       window.location.href = deepLink;
     }
