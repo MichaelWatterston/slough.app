@@ -58,26 +58,48 @@
       <h1>Slough App</h1>
       <p class="subtitle" id="bridge-subtitle">Someone shared a post with you.</p>
       <a id="open-btn" class="btn btn-open" href="#">Open in Slough App</a>
-      <a class="btn btn-ios" href="https://apps.apple.com/app/sloughapp/idXXXXXXXXX">Download on the App Store</a>
+      <a class="btn btn-ios" href="https://apps.apple.com/app/id6760595588">Download on the App Store</a>
       <a class="btn btn-android" href="https://play.google.com/store/apps/details?id=com.sloughapp.app">Get it on Google Play</a>
       <small>Don't have the app? Download it above.</small>
     </div>
   </main>
 
   <script>
-    var path = window.location.pathname;
-    var m = path.match(/^\/(post|userProfile)\/([^/?#]+)/);
-    if (m) {
+    (function () {
+      var path = window.location.pathname;
+      var m = path.match(/^\/(post|userProfile)\/([^/?#]+)/);
+      if (!m) return;
+
       document.getElementById('not-found-card').classList.add('hidden');
       document.getElementById('post-bridge-card').classList.remove('hidden');
       document.getElementById('bridge-subtitle').textContent =
         m[1] === 'userProfile'
           ? 'Someone shared a profile with you.'
           : 'Someone shared a post with you.';
+
       var deepLink = 'sloughapp://' + m[1] + '/' + m[2];
       document.getElementById('open-btn').href = deepLink;
+
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var isAndroid = /Android/i.test(ua);
+      if (!isIOS && !isAndroid) return;
+
+      var storeUrl = isIOS
+        ? 'https://apps.apple.com/app/id6760595588'
+        : 'https://play.google.com/store/apps/details?id=com.sloughapp.app';
+
+      // If the app doesn't take over within 1.5s, send the user to the store.
+      var fallbackTimer = setTimeout(function () {
+        if (!document.hidden) window.location.replace(storeUrl);
+      }, 1500);
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) clearTimeout(fallbackTimer);
+      });
+
       window.location.href = deepLink;
-    }
+    })();
   </script>
   <script src="assets/js/nav.js" defer></script>
 </body>
