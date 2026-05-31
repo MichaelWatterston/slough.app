@@ -308,6 +308,37 @@ section.home-section { padding: 96px 24px; position: relative; }
 .final h2 { font-size: clamp(2rem, 5vw, 3.25rem); margin-bottom: 16px; color: var(--ink); }
 .final p { max-width: 540px; margin: 0 auto 32px; font-size: 1.1rem; }
 .badges-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.hero-badges { margin: 0; flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+.hero-badges .store-badge { justify-content: flex-start; }
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 32px auto 40px;
+  flex-wrap: wrap;
+}
+.hero-qr {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.hero-qr img { display: block; width: 200px; height: 200px; }
+.hero-qr-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+@media (max-width: 720px) {
+  .hero-qr { display: none; }
+}
 .store-badge {
   display: inline-flex;
   align-items: center;
