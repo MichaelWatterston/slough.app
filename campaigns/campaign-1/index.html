@@ -10,6 +10,20 @@
 
     gtag('config', 'G-REX65RTK9G');
   </script>
+  <script>
+    // QR-scan redirect: send mobile straight to the relevant store.
+    // 800ms delay lets gtag fire the page_view beacon before we leave.
+    (function () {
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var isAndroid = /Android/i.test(ua);
+      if (!isIOS && !isAndroid) return;
+      var target = isIOS
+        ? 'https://apps.apple.com/gb/app/id6760595588'
+        : 'https://play.google.com/store/apps/details?id=com.sloughapp.app';
+      setTimeout(function () { window.location.replace(target); }, 800);
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, follow">
