@@ -3,5 +3,6 @@ Allow: /
 Disallow: /post/
 Disallow: /reset-password
 Disallow: /reset-password.html
+Disallow: /campaigns/
 
 Sitemap: https://www.slough.app/sitemap.xml
