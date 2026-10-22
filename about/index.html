@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REX65RTK9G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-REX65RTK9G');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Slough App is made for the people of Slough. Find out who we are and why we built a community app just for our town.">
+  <meta property="og:title" content="About Slough App" />
+  <meta property="og:description" content="Discover what's happening on your street, buy and sell with people nearby, find jobs close to home, and join groups that match your interests. All in one place, made for our town." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/logo.png" />
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://www.slough.app/about/">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../assets/css/newdesign1.css">
+  <title>About Slough App</title>
+</head>
+<body class="nd">
+
+  <!-- NAV -->
+  <nav class="nav nd-nav">
+    <div class="nav-inner">
+      <a href="/" class="brand" aria-label="Slough App home">
+        <img src="../logo.png" alt="">
+        <span>Slough App</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/get-slough-app/">Get the App</a>
+        <a href="/about/" class="active">About</a>
+      </div>
+      <div class="nav-right">
+        <a href="#download" class="nav-cta">Get the app</a>
+        <div class="nav-burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ABOUT (wordmark + photo panel) -->
+  <main class="nd-intro" aria-label="About Slough App">
+    <div class="nd-intro-text reveal">
+      <img class="nd-wordmark-img" src="../assets/screenshots/NewDesign1/logo2.png" alt="slough app." width="1024" height="1024" loading="lazy">
+      <p class="nd-intro-tag">Made for the people of Slough</p>
+    </div>
+    <div class="nd-intro-photo reveal">
+      <img src="../assets/screenshots/NewDesign1/screenshot1.png" alt="Three friends laughing together in Slough, with the Slough App logo" width="1320" height="2868" loading="lazy">
+    </div>
+  </main>
+
+  <!-- ABOUT TEXT -->
+  <section class="nd-section nd-about">
+    <div class="nd-wrap">
+      <div class="nd-head reveal">
+        <h2>Made in Slough,<br>for Slough.</h2>
+        <p>Slough App is a community app built by people who live here, for the people who live here. One place for what's happening, what's for sale, who's hiring and who to meet.</p>
+      </div>
+
+      <div class="nd-about-body reveal">
+        <h3>Why we built it</h3>
+        <p>When something opens up, gets sold or fills up in Slough, you should hear about it in time. Slough App keeps posts, listings, jobs and groups close to home, so what you see is relevant to your street, your schools, your shops and your neighbours.</p>
+
+        <h3>What's inside</h3>
+        <dl class="nd-about-grid">
+          <div>
+            <dt>Local feed</dt>
+            <dd>Post updates, photos and videos to a feed that only Slough sees. Reply, react and stay in the loop with neighbours.</dd>
+          </div>
+          <div>
+            <dt>Buy and sell</dt>
+            <dd>List items in seconds, message buyers safely in-app and collect from somewhere you already know.</dd>
+          </div>
+          <div>
+            <dt>Jobs</dt>
+            <dd>Roles from Slough employers and side gigs from local residents, so you can find work without the commute.</dd>
+          </div>
+          <div>
+            <dt>Groups</dt>
+            <dd>Interest-based groups across 14 categories, including sport, families, food, faith, parenting and hobbies.</dd>
+          </div>
+        </dl>
+
+        <h3>Free to use</h3>
+        <p>Slough App is free to join and free to use, and every essential feature stays free. An optional Premium upgrade adds extra features and can be cancelled at any time in your device settings.</p>
+
+        <h3>Looking after the community</h3>
+        <p>We actively moderate content and respond quickly to reports. You can report or block anyone, hide keywords, topics or accounts you would rather not see, and delete your account and data at any time, no questions asked. You always have the final say over what you see.</p>
+
+        <h3>Get in touch</h3>
+        <p>Questions, ideas or feedback are always welcome. Visit the <a href="/contact/">Help &amp; Contact</a> page to reach the team, or <a href="/#download">download the app</a> and join your neighbours.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="about">
+    <div class="foot-inner">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <img src="../logo.png" alt="">
+          <span>Slough App</span>
+        </div>
+        <p class="foot-tag">Made for our town.</p>
+      </div>
+
+      <nav class="foot-links foot-links-row" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/get-slough-app/">Get the App</a>
+        <a href="/about/">About</a>
+        <a href="/launch-party/">Get Notified</a>
+        <a href="/contact/">Help &amp; Contact</a>
+        <a href="/child-safety/">Child Safety</a>
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </div>
+    <p class="foot-bottom">&copy; 2026 Slough App. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+  <script src="../assets/js/nav.js" defer></script>
+</body>
+</html>
