@@ -502,6 +502,17 @@
 .nd-about-grid dd { font-size: 1rem; line-height: 1.55; color: var(--muted); }
 @media (min-width: 720px) { .nd-about-grid { grid-template-columns: 1fr 1fr; } }
 
+/* ---------- Get the App page ---------- */
+.nd-get-row { margin-top: 32px; }
+.nd-hero-get .eyebrow { margin-bottom: 18px; }
+@media (min-width: 880px) { .nd-hero-get .nd-hero-text { padding-top: 56px; padding-bottom: 56px; } }
+.nd-get-row .nd-download-row { justify-content: center; }
+.nd-tools-3 { max-width: 1040px; margin: 0 auto; }
+@media (min-width: 720px) { .nd-tools-3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) { .nd-tools.nd-tools-3 { grid-template-columns: repeat(3, 1fr); } }
+.nd-safe-line { max-width: 640px; margin: 0 auto; text-align: center; font-size: 1.05rem; line-height: 1.6; color: var(--muted); }
+.nd-safe-line a { color: var(--c-blue); text-decoration: underline; text-underline-offset: 3px; }
+
 /* ---------- Mobile rhythm ---------- */
 @media (max-width: 879px) {
   :root { --nd-gap: 72px; }
