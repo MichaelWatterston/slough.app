@@ -17,6 +17,7 @@ Slough App is made by locals, for locals. The site at https://www.slough.app is 
 - [Privacy Policy](https://www.slough.app/privacy/): How Slough App handles user data.
 - [Terms of Service & EULA](https://www.slough.app/terms/): Terms of use for the app and website.
 - [Child Safety Standards](https://www.slough.app/child-safety/): Slough App's standards against child sexual abuse and exploitation (CSAE), in line with Apple and Google requirements.
+- [Accessibility](https://www.slough.app/accessibility): Which accessibility features the app supports, how to turn them on, known limitations, and how to report a problem.
 
 ## About
 

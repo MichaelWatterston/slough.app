@@ -58,7 +58,6 @@
   font-size: 0.98rem;
   font-family: inherit;
   transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
-  outline: none;
 }
 .card input::placeholder,
 .card textarea::placeholder { color: #9b9bb0; }
@@ -134,3 +133,8 @@
   border: 1px solid rgba(221, 38, 57, 0.28);
   color: var(--c-red);
 }
+
+/* Narrow phones: the captcha is a fixed 302px wide, so give it room and scale it down rather than let it be cut off */
+@media (max-width: 430px) { .card { padding-left: 16px; padding-right: 16px; } }
+@media (max-width: 381px) { .h-captcha { transform: scale(0.88); transform-origin: 0 0; } }
+@media (max-width: 345px) { .h-captcha { transform: scale(0.79); } }

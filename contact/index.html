@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-REX65RTK9G"></script>
@@ -12,6 +12,7 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Slough App support. Send us a message about your account, subscription, child safety or anything else, or email support@slough.app.">
   <meta property="og:title" content="Contact - SloughApp" />
   <meta property="og:description" content="Get in touch with the SloughApp team" />
   <link rel="canonical" href="https://www.slough.app/contact/">
@@ -22,6 +23,8 @@
   <link rel="stylesheet" href="../assets/css/contact.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- NAV -->
   <nav class="nav">
@@ -36,9 +39,9 @@
       </div>
       <div class="nav-right">
         <a href="/get-slough-app/" class="nav-cta">Get the app</a>
-        <div class="nav-burger" aria-label="Menu">
+        <button type="button" class="nav-burger" aria-label="Menu">
           <span></span><span></span><span></span>
-        </div>
+        </button>
       </div>
     </div>
   </nav>
@@ -53,7 +56,7 @@
   </header>
 
   <!-- FORM -->
-  <main class="contact-section">
+  <main id="main" tabindex="-1" class="contact-section">
     <div class="card">
       <form id="contact-form" novalidate>
         <!-- Web3Forms access key — routes submissions to support@slough.app -->
@@ -106,6 +109,7 @@
             type="text"
             id="other-subject"
             name="other_subject"
+            aria-label="Describe your topic"
             placeholder="Describe your topic…"
             maxlength="150"
           >
@@ -126,7 +130,7 @@
 
         <button type="submit" id="submit-btn">Send Message</button>
 
-        <div class="message" id="msg-box"></div>
+        <div class="message" id="msg-box" role="status" aria-live="polite"></div>
       </form>
     </div>
   </main>
@@ -149,6 +153,7 @@
         <a href="/child-safety/">Child Safety</a>
         <a href="/terms/">Terms</a>
         <a href="/privacy/">Privacy</a>
+        <a href="/accessibility">Accessibility</a>
       </nav>
     </div>
     <p class="foot-bottom">&copy; 2026 Slough App. All rights reserved.</p>

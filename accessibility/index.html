@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <!-- This page is published twice so it loads at both /accessibility and /accessibility/
+       without a redirect. Keep accessibility.html and accessibility/index.html identical. -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REX65RTK9G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-REX65RTK9G');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility — Slough App</title>
+  <meta name="description" content="What Slough App supports for VoiceOver, TalkBack, Voice Control, Larger Text, Dark Interface, Reduced Motion and contrast, how to turn each one on, what does not work yet, and how to contact us.">
+  <meta property="og:title" content="Accessibility — Slough App" />
+  <meta property="og:description" content="Which accessibility features Slough App supports, how to turn them on, what does not work yet, and how to contact us." />
+  <link rel="canonical" href="https://www.slough.app/accessibility">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/assets/css/shared.css">
+  <link rel="stylesheet" href="/assets/css/accessibility.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Main">
+    <div class="nav-inner">
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="">
+        <span>Slough App</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/get-slough-app/">Get the App</a>
+      </div>
+      <div class="nav-right">
+        <a href="/get-slough-app/" class="nav-cta">Get the app</a>
+        <button type="button" class="nav-burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Help</span>
+      <h1>Accessibility</h1>
+      <p class="page-hero-lede">App version 3.3.0. Last updated 22 November 2026.</p>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="page-content" id="main" tabindex="-1">
+    <div class="page-content-inner">
+
+      <p>Slough App is a free community app for the town of Slough, UK, on iPhone and Android. This page tells you which accessibility features the app supports, how to turn them on, and what does not work yet.</p>
+      <p>It describes version 3.3.0 of the app and was last updated on 22 November 2026.</p>
+      <p>Some things do not work yet. They are listed together under <a href="#known-limitations">Known limitations</a>. If something gets in your way, you can <a href="#tell-us">tell us about a problem</a>.</p>
+
+      <h2 id="summary">Summary</h2>
+      <p>Each feature has one of three statuses: Supported, Partly supported or Not supported.</p>
+      <div class="table-scroll" role="region" aria-labelledby="summary-caption" tabindex="0">
+        <table>
+          <caption id="summary-caption">Accessibility features and their status in Slough App 3.3.0</caption>
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Status</th>
+              <th scope="col">Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="#dark-interface">Dark Interface</a></th>
+              <td><span class="status">Supported</span></td>
+              <td>Light and dark appearance. It follows your phone, or you can set it in the app.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#larger-text">Larger Text</a></th>
+              <td><span class="status">Supported</span></td>
+              <td>Follows your phone's text size. You can also set it in the app, up to 200%.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#reduced-motion">Reduced Motion</a></th>
+              <td><span class="status">Supported</span></td>
+              <td>Follows your phone's Reduce Motion setting. You can also switch it on in the app.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#sufficient-contrast">Sufficient Contrast</a></th>
+              <td><span class="status">Supported</span></td>
+              <td>Text and controls were checked against contrast targets in light and dark mode.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#voiceover">VoiceOver, and TalkBack (Android)</a></th>
+              <td><span class="status">Partly supported</span></td>
+              <td>Buttons, forms, headings and pop-ups are labelled. Photos posted by members have no descriptions.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#voice-control">Voice Control</a></th>
+              <td><span class="status">Partly supported</span></td>
+              <td>Controls have names you can speak. Some may need "Show numbers".</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#differentiate">Differentiate Without Color Alone</a></th>
+              <td><span class="status">Partly supported</span></td>
+              <td>Most states also use text, ticks or shapes. A few may rely on colour.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#captions">Captions</a></th>
+              <td><span class="status">Not supported</span></td>
+              <td>Videos posted by members do not have captions.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#audio-descriptions">Audio Descriptions</a></th>
+              <td><span class="status">Not supported</span></td>
+              <td>Videos do not have audio descriptions.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="features">Each feature in detail</h2>
+
+      <h3 id="dark-interface">Dark Interface</h3>
+      <p class="feature-status">Status: <span class="status">Supported</span></p>
+      <p>The app has a light appearance and a dark appearance. Unless you change it, the app follows your phone's own light or dark setting.</p>
+      <p>To fix it in the app, open the <strong>Profile</strong> tab, choose <strong>Appearance, Font Size &amp; Accessibility</strong>, then <strong>Theme</strong>. There are three options: <strong>System</strong>, <strong>Light</strong> and <strong>Dark</strong>.</p>
+
+      <h3 id="larger-text">Larger Text</h3>
+      <p class="feature-status">Status: <span class="status">Supported</span></p>
+      <p>Unless you change it, the app follows your phone's text size setting. On iPhone you can find this in either of these places:</p>
+      <ul>
+        <li>Settings, then Display &amp; Brightness, then Text Size.</li>
+        <li>Settings, then Accessibility, then Display &amp; Text Size, then Larger Text.</li>
+      </ul>
+      <p>The app also has its own text size setting, which overrides the phone's. Open the <strong>Profile</strong> tab, choose <strong>Appearance, Font Size &amp; Accessibility</strong>, then <strong>Text size</strong>. The options are <strong>System</strong>, <strong>100%</strong>, <strong>115%</strong>, <strong>130%</strong>, <strong>145%</strong>, <strong>160%</strong>, <strong>180%</strong> and <strong>200%</strong>.</p>
+      <p>What to expect:</p>
+      <ul>
+        <li>Text scaling is never switched off anywhere in the app.</li>
+        <li>At larger sizes, screens rearrange instead of shrinking the text. Buttons that sit side by side stack on top of each other, grids become a single column, and some decorative images are hidden to make room.</li>
+        <li>The smallest text in the app is 13pt at the default size.</li>
+      </ul>
+      <p>What to be aware of: at the very largest sizes, some single-line labels may be cut short.</p>
+
+      <h3 id="reduced-motion">Reduced Motion</h3>
+      <p class="feature-status">Status: <span class="status">Supported</span></p>
+      <p>The app follows your phone's Reduce Motion setting automatically. On iPhone this is in Settings, then Accessibility, then Motion, then Reduce Motion.</p>
+      <p>You can also switch it on in the app. Open the <strong>Profile</strong> tab, choose <strong>Appearance, Font Size &amp; Accessibility</strong>, then <strong>Reduce motion</strong>. The switch in the app can turn Reduce motion on. It cannot turn it off while your phone's own setting is on.</p>
+      <p>When Reduce motion is on:</p>
+      <ul>
+        <li>Videos do not play automatically. This covers group cover videos, banner videos and video previews in the feed. A video still plays when you tap it.</li>
+        <li>Animated images that are part of the app show a still frame.</li>
+        <li>The moving background shapes on the news and events cards stay still.</li>
+        <li>Entrance animations in sign-up are removed.</li>
+      </ul>
+      <p>What to be aware of:</p>
+      <ul>
+        <li>A few short interface animations remain, such as a sliding toggle and an arrow that rotates when a section opens.</li>
+        <li>Animated GIFs posted by members may still animate.</li>
+      </ul>
+
+      <h3 id="sufficient-contrast">Sufficient Contrast</h3>
+      <p class="feature-status">Status: <span class="status">Supported</span></p>
+      <p>In version 3.3.0 we reviewed the colours across the app in both light and dark mode. Our targets were 4.5:1 for text, and 3:1 for controls and for indicators such as ticked and unticked boxes. These are the WCAG 2.1 AA figures. The review was done by measuring the colours used in the app.</p>
+      <ul>
+        <li>Text fields have a clearly visible outline.</li>
+        <li>White text placed over photos, videos and animated backgrounds has a dark backing behind it, so it stays readable whatever is underneath.</li>
+      </ul>
+      <p>What is not covered:</p>
+      <ul>
+        <li>Photos, videos and text posted by members.</li>
+        <li>Adverts, which can use colours chosen by the advertiser.</li>
+        <li>Buttons that are switched off (greyed out). These are intentionally lower contrast until they can be used.</li>
+        <li>Small coloured icons that sit next to a text label. These may be lower contrast. The label carries the meaning.</li>
+      </ul>
+
+      <h3 id="voiceover">VoiceOver, and TalkBack (Android)</h3>
+      <p class="feature-status">Status: <span class="status">Partly supported</span></p>
+      <p>The app works with VoiceOver on iPhone and TalkBack on Android. This is what we have built:</p>
+      <ul>
+        <li>Every button has a spoken name and is announced as a button. This includes icon-only buttons such as back, vote, share, play and mute.</li>
+        <li>The bottom tab bar announces each tab, which one is selected, and the number of unread messages.</li>
+        <li>Screen and section titles are marked as headings, so you can jump between them with the rotor, or with headings navigation in TalkBack.</li>
+        <li>Form fields are labelled. Required fields are announced as required, and error messages are read out when they appear.</li>
+        <li>Pop-ups keep focus inside them until they are closed. You can close them with the escape gesture, and focus returns to where you were.</li>
+        <li>The event date and time picker works with the adjust gesture (swipe up or down).</li>
+        <li>Selected states are announced, for example an upvote, a chosen filter or a selected menu item.</li>
+        <li>Images that are part of the app have descriptions.</li>
+      </ul>
+      <p>What to be aware of:</p>
+      <ul>
+        <li>Some screens may not read as smoothly as others. If one gives you trouble, please <a href="#tell-us">tell us about the problem</a>.</li>
+        <li>Photos posted by members do not have descriptions. They are announced by position, for example "Image 2 of 5".</li>
+        <li>Some items that open a web page are announced as "button", not "link".</li>
+      </ul>
+
+      <h3 id="voice-control">Voice Control</h3>
+      <p class="feature-status">Status: <span class="status">Partly supported</span></p>
+      <p>Buttons and controls have names. You can activate them by saying "Tap" followed by the name, or by using "Show names" or "Show numbers".</p>
+      <p>What to be aware of: some controls may be easier to reach with "Show numbers" than by name.</p>
+
+      <h3 id="differentiate">Differentiate Without Color Alone</h3>
+      <p class="feature-status">Status: <span class="status">Partly supported</span></p>
+      <p>Most states in the app are shown in more than one way:</p>
+      <ul>
+        <li>Selected options show a tick or a filled shape as well as a colour change.</li>
+        <li>Required form fields are marked with an asterisk, and errors are shown as text next to the field.</li>
+        <li>Sold items, closed jobs, and cancelled or ended events are labelled in words.</li>
+        <li>Unread messages show a number. Unread notifications show a dot as well as a tint.</li>
+        <li>An upvote or downvote changes from an outline icon to a filled icon as well as changing colour.</li>
+      </ul>
+      <p>What to be aware of: a few states on some screens may still rely on colour.</p>
+
+      <h3 id="captions">Captions</h3>
+      <p class="feature-status">Status: <span class="status">Not supported</span></p>
+      <p>Videos in the app are posted by members and businesses. They do not have captions.</p>
+      <p>The app's own decorative videos (group covers and banners) play without sound.</p>
+
+      <h3 id="audio-descriptions">Audio Descriptions</h3>
+      <p class="feature-status">Status: <span class="status">Not supported</span></p>
+      <p>Videos in the app do not have audio descriptions.</p>
+
+      <h2 id="settings">Accessibility settings inside the app</h2>
+      <p>All three settings are in one place. Open the <strong>Profile</strong> tab, then choose <strong>Appearance, Font Size &amp; Accessibility</strong>.</p>
+      <div class="table-scroll" role="region" aria-labelledby="settings-caption" tabindex="0">
+        <table>
+          <caption id="settings-caption">Settings under Profile, Appearance, Font Size &amp; Accessibility</caption>
+          <thead>
+            <tr>
+              <th scope="col">Setting</th>
+              <th scope="col">Options</th>
+              <th scope="col">What it does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Theme</th>
+              <td>System, Light, Dark</td>
+              <td>Sets the app's appearance, or follows the phone.</td>
+            </tr>
+            <tr>
+              <th scope="row">Text size</th>
+              <td>System, 100%, 115%, 130%, 145%, 160%, 180%, 200%</td>
+              <td>Sets the size of all text in the app, or follows the phone.</td>
+            </tr>
+            <tr>
+              <th scope="row">Reduce motion</th>
+              <td>On, Off</td>
+              <td>Stops videos and animations playing automatically. Always on when the phone's Reduce Motion setting is on.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <p>You do not need to set any of these. The app already respects your phone's own settings. They are there if you want the app to differ from the rest of your phone.</p>
+      </div>
+
+      <h2 id="known-limitations">Known limitations</h2>
+      <p>These things do not work yet:</p>
+      <ul>
+        <li>Photos posted by members have no descriptions for screen readers.</li>
+        <li>Videos have no captions or audio descriptions.</li>
+        <li>Some screens work better than others with a screen reader or Voice Control.</li>
+        <li>At the largest text sizes some labels may be cut short.</li>
+        <li>Animated GIFs posted by members may still play when Reduce Motion is on.</li>
+        <li>Content and adverts created by members and businesses may not meet our contrast targets.</li>
+        <li>The app is designed for portrait orientation on phones.</li>
+      </ul>
+
+      <h2 id="tell-us">Tell us about a problem</h2>
+      <p>If something in the app is hard to use, we want to know. You can reach us in three ways:</p>
+      <ul>
+        <li>Email <a href="mailto:support@slough.app">support@slough.app</a>.</li>
+        <li>In the app, use the <strong>Feedback</strong> tab on the right-hand edge of every screen. You can send text and, if you like, a screenshot.</li>
+        <li>In the app, open the <strong>Profile</strong> tab and choose <strong>Contact Support</strong>.</li>
+      </ul>
+      <p>It helps us if you include:</p>
+      <ul>
+        <li>the device you were using</li>
+        <li>the accessibility feature you were using</li>
+        <li>the screen you were on</li>
+      </ul>
+
+      <h2 id="working-on">What we are working on</h2>
+      <p>We are continuing to improve screen reader and Voice Control support. We are also improving how screens fit at the largest text sizes. We will update this page when things change.</p>
+
+      <h2 id="last-updated">Last updated</h2>
+      <p>This page was last updated on 22 November 2026. It describes Slough App version 3.3.0.</p>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="about">
+    <div class="foot-inner">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <img src="/logo.png" alt="">
+          <span>Slough App</span>
+        </div>
+        <p class="foot-tag">Made for our town.</p>
+      </div>
+
+      <nav class="foot-links-row" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/get-slough-app/">Get the App</a>
+        <a href="/contact/">Help &amp; Contact</a>
+        <a href="/child-safety/">Child Safety</a>
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/accessibility" aria-current="page">Accessibility</a>
+      </nav>
+    </div>
+    <p class="foot-bottom">&copy; 2026 Slough App. All rights reserved.</p>
+  </footer>
+
+  <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

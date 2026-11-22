@@ -252,7 +252,6 @@ section { padding: 80px 24px; position: relative; }
   font-size: 0.95rem;
   font-family: inherit;
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-  outline: none;
 }
 .form-card input::placeholder,
 .form-card textarea::placeholder { color: #9ca3af; }
@@ -283,7 +282,7 @@ section { padding: 80px 24px; position: relative; }
 }
 button[type="submit"] {
   width: 100%;
-  background: var(--brand-gradient);
+  background: var(--button-gradient);
   background-size: 200% 200%;
   color: #fff;
   border: none;
@@ -377,3 +376,11 @@ button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
   .hero h1 .accent { background-size: 200% 200%; animation: gradientShift 8s ease infinite; }
   .hero::before { animation: heroBlob 9s ease-in-out infinite; }
 }
+
+/* Narrow phones: the captcha is a fixed 302px wide, so give it room and scale it down rather than let it be cut off */
+@media (max-width: 430px) {
+  .form-section .wrap { padding: 0; }
+  .form-card { padding-left: 16px; padding-right: 16px; }
+}
+@media (max-width: 381px) { .h-captcha { transform: scale(0.88); transform-origin: 0 0; } }
+@media (max-width: 345px) { .h-captcha { transform: scale(0.79); } }

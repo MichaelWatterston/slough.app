@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-REX65RTK9G"></script>
@@ -26,6 +26,8 @@
 </head>
 <body class="nd">
 
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <!-- NAV -->
   <nav class="nav nd-nav">
     <div class="nav-inner">
@@ -40,15 +42,16 @@
       </div>
       <div class="nav-right">
         <a href="#download" class="nav-cta">Get the app</a>
-        <div class="nav-burger" aria-label="Menu">
+        <button type="button" class="nav-burger" aria-label="Menu">
           <span></span><span></span><span></span>
-        </div>
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- ABOUT (wordmark + photo panel) -->
-  <main class="nd-intro" aria-label="About Slough App">
+  <main id="main" tabindex="-1">
+  <div class="nd-intro">
     <div class="nd-intro-text reveal">
       <img class="nd-wordmark-img" src="../assets/screenshots/NewDesign1/logo2.png" alt="slough app." width="1024" height="1024" loading="lazy">
       <p class="nd-intro-tag">Made for the people of Slough</p>
@@ -56,21 +59,21 @@
     <div class="nd-intro-photo reveal">
       <img src="../assets/screenshots/NewDesign1/screenshot1.png" alt="Three friends laughing together in Slough, with the Slough App logo" width="1320" height="2868" loading="lazy">
     </div>
-  </main>
+  </div>
 
   <!-- ABOUT TEXT -->
   <section class="nd-section nd-about">
     <div class="nd-wrap">
       <div class="nd-head reveal">
-        <h2>Made in Slough,<br>for Slough.</h2>
+        <h1>Made in Slough,<br>for Slough.</h1>
         <p>Slough App is a community app built by people who live here, for the people who live here. One place for what's happening, what's for sale, who's hiring and who to meet.</p>
       </div>
 
       <div class="nd-about-body reveal">
-        <h3>Why we built it</h3>
+        <h2>Why we built it</h2>
         <p>When something opens up, gets sold or fills up in Slough, you should hear about it in time. Slough App keeps posts, listings, jobs and groups close to home, so what you see is relevant to your street, your schools, your shops and your neighbours.</p>
 
-        <h3>What's inside</h3>
+        <h2>What's inside</h2>
         <dl class="nd-about-grid">
           <div>
             <dt>Local feed</dt>
@@ -90,17 +93,19 @@
           </div>
         </dl>
 
-        <h3>Free to use</h3>
+        <h2>Free to use</h2>
         <p>Slough App is free to join and free to use, and every essential feature stays free. An optional Premium upgrade adds extra features and can be cancelled at any time in your device settings.</p>
 
-        <h3>Looking after the community</h3>
+        <h2>Looking after the community</h2>
         <p>We actively moderate content and respond quickly to reports. You can report or block anyone, hide keywords, topics or accounts you would rather not see, and delete your account and data at any time, no questions asked. You always have the final say over what you see.</p>
 
-        <h3>Get in touch</h3>
+        <h2>Get in touch</h2>
         <p>Questions, ideas or feedback are always welcome. Visit the <a href="/contact/">Help &amp; Contact</a> page to reach the team, or <a href="/#download">download the app</a> and join your neighbours.</p>
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer id="about">
     <div class="foot-inner">
@@ -120,6 +125,7 @@
         <a href="/child-safety/">Child Safety</a>
         <a href="/terms/">Terms</a>
         <a href="/privacy/">Privacy</a>
+        <a href="/accessibility">Accessibility</a>
       </nav>
     </div>
     <p class="foot-bottom">&copy; 2026 Slough App. All rights reserved.</p>
