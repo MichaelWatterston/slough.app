@@ -1,0 +1,115 @@
+/* LOCAL GUIDE PAGES (bin days, what's on, school term dates)
+   Loaded after shared.css and newdesign1.css. Built by scripts/build-guides.py. */
+
+/* Long-form reading: body text is darker than the site-wide muted grey (10:1 on white) */
+.guide-section { --muted: #3a3a55; padding-top: calc(var(--nd-gap) * 0.6); padding-bottom: calc(var(--nd-gap) * 0.7); }
+.guide-crumbs { max-width: 720px; margin: 0 auto 28px; font-size: 0.9rem; color: var(--muted); }
+.guide-crumbs a { color: var(--c-blue); text-decoration: underline; text-underline-offset: 3px; }
+.guide-head { margin-bottom: 40px; }
+.guide-head h1 { font-size: clamp(2rem, 3.6vw, 3rem); }
+.guide-updated { margin-top: 14px; font-size: 0.9rem !important; color: var(--muted); }
+
+.guide-body { overflow-wrap: break-word; }
+.guide-body h3 { font-size: 1.1rem; margin: 28px 0 8px; }
+.guide-body p { margin-bottom: 14px; }
+.guide-body ul, .guide-body ol { margin: 0 0 16px 1.375rem; }
+.guide-body li { font-size: 1.05rem; line-height: 1.6; color: var(--muted); margin-bottom: 8px; }
+.guide-body strong { color: var(--ink); font-weight: 600; }
+
+/* Quick answer / note box */
+.guide-note {
+  background: var(--soft);
+  border-left: 4px solid var(--c-blue);
+  border-radius: 0 14px 14px 0;
+  padding: 18px 22px;
+  margin: 0 0 24px;
+}
+.guide-note p { color: var(--ink-2); }
+.guide-note p:last-child, .guide-note ul:last-child { margin-bottom: 0; }
+.guide-note li { color: var(--ink-2); }
+
+/* Tables scroll inside their own container, text is never shrunk */
+.guide-table {
+  overflow-x: auto;
+  margin: 0 0 20px;
+  border: 1px solid #b9b9c9;
+  border-radius: 12px;
+}
+.guide-table table { width: 100%; min-width: 30rem; border-collapse: collapse; font-size: 1rem; line-height: 1.5; }
+.guide-table caption {
+  text-align: left;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 12px 14px;
+  background: var(--soft);
+  border-bottom: 1px solid #b9b9c9;
+}
+.guide-table th, .guide-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 14px;
+  border-bottom: 1px solid #d5d5e0;
+  color: var(--ink-2);
+}
+.guide-table th { color: var(--ink); font-weight: 700; }
+.guide-table thead th { border-bottom: 2px solid var(--ink); }
+.guide-table tbody tr:last-child th, .guide-table tbody tr:last-child td { border-bottom: 0; }
+
+/* Bin colour marker: always next to the colour's name, never colour alone */
+.bin-dot {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 3px;
+  margin-right: 8px;
+  border: 1px solid rgba(19, 19, 70, 0.35);
+}
+.bin-grey { background: #7d7d86; }
+.bin-red { background: #c8202f; }
+.bin-green { background: #2c8a43; }
+.bin-silver { background: #c9ccd3; }
+
+/* Fun facts */
+.guide-facts { list-style: none; margin: 16px 0 0 !important; display: grid; grid-template-columns: 1fr; gap: 16px; counter-reset: fact; }
+.guide-facts li {
+  counter-increment: fact;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px 24px;
+  background: #fff;
+  margin: 0;
+  font-size: 1rem;
+}
+.guide-facts li::before {
+  content: 'Fact ' counter(fact);
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #8a12ad;
+  margin-bottom: 8px;
+}
+.guide-facts strong { display: block; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+@media (min-width: 720px) { .guide-facts { grid-template-columns: 1fr 1fr; } }
+
+/* FAQ sits inside the article column */
+.guide-body .nd-faq { margin-top: 8px; }
+.guide-body .nd-faq details p { font-size: 1rem; margin-bottom: 0; }
+
+/* Links to the other guides */
+.guide-more { list-style: none; margin: 16px 0 0 !important; display: grid; gap: 12px; }
+.guide-more li { margin: 0; }
+.guide-more a {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 20px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+.guide-more a span { display: block; font-weight: 400; font-size: 0.95rem; color: var(--muted); margin-top: 2px; }
+.guide-more a:hover { border-color: var(--c-blue); }
+
+.guide-sources { font-size: 0.95rem !important; }
