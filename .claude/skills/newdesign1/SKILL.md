@@ -13,7 +13,7 @@ The full specification lives in `assets/screenshots/NewDesign1/BUILD_PROMPT.md`.
 2. Read the five Airbnb reference screenshots in `assets/screenshots/NewDesign1/screenshots/` and the phone placeholder `assets/screenshots/NewDesign1/SloughApp_1.png` with the Read tool so you can see them.
 3. Read `index.html`, `assets/css/shared.css`, `assets/css/home.css` and `assets/js/nav.js` to pick up the existing markup patterns, tokens and approved copy.
 4. If `newdesign1/index.html` already exists, this is an iteration: diff the current page against the spec and the screenshots and fix the gaps rather than rebuilding.
-5. Build or update `newdesign1/index.html` and `assets/css/newdesign1.css` exactly as the prompt specifies. Never edit `index.html`, `home.css` or `shared.css` for this task.
+5. Build or update `newdesign1/index.html` and `assets/css/site.css` exactly as the prompt specifies. Never edit `index.html`, `home.css` or `shared.css` for this task.
 6. Run the Verification section of the prompt: serve, screenshot to `.redesign-shots/newdesign1/`, compare with the references, fix, re-shoot.
 7. Do not commit. Finish with a short report: what was built, any `<!-- OWNER: confirm -->` items, and the screenshot paths.
 

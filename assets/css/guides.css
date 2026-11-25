@@ -1,5 +1,5 @@
 /* LOCAL GUIDE PAGES (bin days, what's on, school term dates)
-   Loaded after shared.css and newdesign1.css. Built by scripts/build-guides.py. */
+   Loaded after shared.css and site.css. Built by scripts/build-guides.py. */
 
 /* Long-form reading: body text is darker than the site-wide muted grey (10:1 on white) */
 .guide-section { --muted: #3a3a55; padding-top: calc(var(--nd-gap) * 0.6); padding-bottom: calc(var(--nd-gap) * 0.7); }

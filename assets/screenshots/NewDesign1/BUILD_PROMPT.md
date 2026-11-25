@@ -9,7 +9,7 @@ Copy everything below the line into Claude Code (or run `/newdesign1`, which loa
 Build a new Slough App landing page that is a structural and visual clone of the Airbnb Services host page (https://www.airbnb.com/host/services), re-skinned with Slough App branding and copy. Build it as a **new page**, not by overwriting the current homepage:
 
 - HTML: `newdesign1/index.html` (served at `/newdesign1/`)
-- CSS: `assets/css/newdesign1.css`
+- CSS: `assets/css/site.css`
 
 Do not touch `index.html`, `assets/css/home.css`, or `assets/css/shared.css` except where this prompt says so. Promoting the new page to the homepage is a separate decision for the owner once they have approved it.
 
@@ -41,9 +41,9 @@ Airbnb sections that are **not** in the screenshots but are on the live page, an
 The site is plain static HTML/CSS/JS hosted on GitHub Pages with a custom domain (`CNAME`, `.nojekyll`, `_config.yml`). There is no build step, no framework, no npm. Keep it that way.
 
 - One HTML file per page in its own folder with `index.html`, so URLs are `/newdesign1/`.
-- Head order copied from `index.html`: GA tag (`G-REX65RTK9G`), charset, viewport, description, `og:*` tags, `theme-color`, canonical `https://www.slough.app/newdesign1/`, favicon (`../favicon.ico`), then `../assets/css/shared.css`, then `../assets/css/newdesign1.css`, then `<title>`.
+- Head order copied from `index.html`: GA tag (`G-REX65RTK9G`), charset, viewport, description, `og:*` tags, `theme-color`, canonical `https://www.slough.app/newdesign1/`, favicon (`../favicon.ico`), then `../assets/css/shared.css`, then `../assets/css/site.css`, then `<title>`.
 - Relative asset paths from a sub-folder use `../` (see `get-slough-app/index.html` for the pattern). Internal links are root-relative with trailing slashes (`/become-a-tester/`).
-- Nav: reuse the existing `.nav` / `.nav-inner` / `.brand` / `.nav-links` / `.nav-right` / `.nav-burger` markup so `nav.js` works unchanged. Airbnb's header is just a logo and one pill button, so in `newdesign1.css` hide `.nav-links` and style `.nav-cta` as the pill. Keep the burger for mobile.
+- Nav: reuse the existing `.nav` / `.nav-inner` / `.brand` / `.nav-links` / `.nav-right` / `.nav-burger` markup so `nav.js` works unchanged. Airbnb's header is just a logo and one pill button, so in `site.css` hide `.nav-links` and style `.nav-cta` as the pill. Keep the burger for mobile.
 - Footer: reuse the existing `<footer>` markup and link set verbatim (Home, Get the App, Become a Tester, Get Notified, Help & Contact, Child Safety, Terms, Privacy, © 2026). These links are required for app-store compliance. Add a "Get the app" badges row above it to mirror Airbnb's repeated CTA.
 - Store badges: copy the App Store and Google Play `<a class="store-badge">` blocks from `index.html` exactly, including the inline SVGs and the two store URLs.
 - Scroll reveal: add `class="reveal"` to section blocks and include the same `IntersectionObserver` snippet from the bottom of `index.html`.
