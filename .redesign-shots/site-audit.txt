@@ -1,0 +1,772 @@
+
+=== / ===
+{
+ "lang": "en-GB",
+ "title": "Slough App, the community app for Slough",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 4.5": [
+   "nav-cta: Get the app"
+  ]
+ },
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 24,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 328,
+   "bodyScrollW": 328,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 10.4
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 10.4
+  }
+ }
+}
+
+=== /get-slough-app/ ===
+{
+ "lang": "en-GB",
+ "title": "Get the App, Slough App",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 4.5": [
+   "nav-cta: Get the app"
+  ]
+ },
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 16,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 10.4
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 10.4
+  }
+ }
+}
+
+=== /about/ ===
+{
+ "lang": "en-GB",
+ "title": "About Slough App",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 4.5": [
+   "nav-cta: Get the app"
+  ]
+ },
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 13,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 13.12
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 13.12
+  }
+ }
+}
+
+=== /contact/ ===
+{
+ "lang": "en-GB",
+ "title": "Contact - SloughApp",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [
+  "HEADER.page-hero",
+  "DIV."
+ ],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [
+  "botcheck",
+  "h-captcha-response"
+ ],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {},
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 21,
+ "noVisibleFocus": [
+  "IFRAME. ",
+  "IFRAME. ",
+  "IFRAME. ",
+  "IFRAME. "
+ ],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 11.52
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 11.52
+  }
+ }
+}
+
+=== /become-a-tester/ ===
+{
+ "lang": "en-GB",
+ "title": "Become a Tester — Slough App",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [
+  "DIV."
+ ],
+ "motionToggle": true,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [
+  "botcheck",
+  "h-captcha-response"
+ ],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 4.5": [
+   "BUTTON: Sign me up"
+  ]
+ },
+ "runningAnimations": [
+  "heroBlob (infinite)",
+  "gradientShift (infinite)",
+  "phoneFloatA (infinite)",
+  "phoneFloatB (infinite)",
+  "phoneFloatC (infinite)"
+ ],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 24,
+ "noVisibleFocus": [
+  "IFRAME. ",
+  "IFRAME. ",
+  "IFRAME. ",
+  "IFRAME. "
+ ],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 11.52
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 11.52
+  }
+ }
+}
+
+=== /launch-party/ ===
+{
+ "lang": "en-GB",
+ "title": "Launching Soon — Slough App",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": true,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [
+  "b_824d3e0c69215877cee4ccb49_3039cd3be3"
+ ],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 4.5": [
+   "BUTTON: Notify me at launch"
+  ]
+ },
+ "runningAnimations": [
+  "heroBlob (infinite)",
+  "gradientShift (infinite)"
+ ],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 16,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  }
+ }
+}
+
+=== /child-safety/ ===
+{
+ "lang": "en-GB",
+ "title": "Child Safety Standards - SloughApp",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [
+  "HEADER.page-hero"
+ ],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {},
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 14,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  }
+ }
+}
+
+=== /terms/ ===
+{
+ "lang": "en-GB",
+ "title": "Terms of Service & EULA - SloughApp",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [
+  "HEADER.page-hero"
+ ],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {},
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 13,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  }
+ }
+}
+
+=== /privacy/ ===
+{
+ "lang": "en-GB",
+ "title": "Privacy Policy - SloughApp",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [
+  "HEADER.page-hero"
+ ],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {},
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 15,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  }
+ }
+}
+
+=== /404.html ===
+{
+ "lang": "en-GB",
+ "title": "Page not found — Slough App",
+ "metaDesc": false,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgba(0, 0, 0, 0) on rgb(255,255,255) 1.00 need 3": [
+   "error-code: 404"
+  ]
+ },
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 6,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12.48
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12.48
+  }
+ }
+}
+
+=== /accessibility.html ===
+{
+ "lang": "en-GB",
+ "title": "Accessibility — Slough App",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [
+  "HEADER.page-hero"
+ ],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {},
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 27,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 12
+  }
+ }
+}
+
+=== /campaigns/campaign-1/ ===
+{
+ "lang": "en-GB",
+ "title": "Get Slough App - Campaign 1",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": true,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 4.5": [
+   "eyebrow: Built for Slough",
+   "P: Every post, listing, job and g",
+   "premium-tag: Optional",
+   "premium-cta: Get the app"
+  ],
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 3": [
+   "H2: No postcode filtering. No nois",
+   "H3: It's time to find your town"
+  ],
+  "rgba(255, 255, 255, 0.85) on rgb(255,255,255) 1.00 need 4.5": [
+   "P: Download Slough App today."
+  ]
+ },
+ "runningAnimations": [
+  "gradientShift (infinite)"
+ ],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 20,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [
+    "accent: in your pocket. right=352"
+   ],
+   "minFontPx": 10.4
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 10.4
+  }
+ }
+}
+
+=== /newdesign1/ ===
+{
+ "lang": "en-GB",
+ "title": "Slough App, the community app for Slough",
+ "metaDesc": true,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {
+  "rgb(255, 255, 255) on rgb(255,255,255) 1.00 need 4.5": [
+   "nav-cta: Get the app"
+  ]
+ },
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 23,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 328,
+   "bodyScrollW": 328,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 10.4
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 10.4
+  }
+ }
+}
+
+=== /reset-password.html ===
+{
+ "lang": "en-GB",
+ "title": "Reset Password — Slough App",
+ "metaDesc": false,
+ "viewport": "width=device-width, initial-scale=1.0",
+ "h1": 1,
+ "headingSkips": [],
+ "main": 1,
+ "outsideMain": [],
+ "motionToggle": false,
+ "skipLink": true,
+ "imgNoAlt": [],
+ "unnamedLinks": [],
+ "unnamedButtons": [],
+ "clickableNonInteractive": [],
+ "unlabelledFields": [],
+ "videos": [],
+ "iframes": 0,
+ "outlineNoneRules": [
+  "main:focus"
+ ],
+ "contrastFails": {},
+ "contrastOverImageOrGradient": {},
+ "runningAnimations": [],
+ "docScrollW": 1280,
+ "inner": 1280,
+ "tabStops": 5,
+ "noVisibleFocus": [],
+ "animationsWithReducedMotion": [],
+ "videosPlayingWithReducedMotion": 0,
+ "reflow": {
+  "320": {
+   "scrollW": 320,
+   "bodyScrollW": 320,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 14.72
+  },
+  "640": {
+   "scrollW": 640,
+   "bodyScrollW": 640,
+   "bodyOverflowX": "hidden",
+   "textPastEdge": [],
+   "minFontPx": 14.72
+  }
+ }
+}

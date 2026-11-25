@@ -1,15 +1,14 @@
 # Slough App
 
-> Slough App is a community app built for the town of Slough, UK. It connects locals through a feed, marketplace, jobs board, and groups. The app is in pre-launch — currently recruiting alpha testers ahead of a public release on iOS and Android.
+> Slough App is a community app built for the town of Slough, UK. It connects locals through a feed, marketplace, jobs board, and groups. The app is live and free to download for iPhone on the App Store and for Android on Google Play.
 
-Slough App is made by locals, for locals. The site at https://www.slough.app is a marketing and signup site; the app itself is mobile-only and is launching on the Apple App Store and Google Play.
+Slough App is made by locals, for locals. The site at https://www.slough.app is the official website; the app itself is mobile-only and is available on the Apple App Store (https://apps.apple.com/gb/app/id6760595588) and Google Play (https://play.google.com/store/apps/details?id=com.sloughapp.app).
 
 ## Key pages
 
-- [Home](https://www.slough.app/): Overview of Slough App and email signup to be notified at launch.
-- [Get the App](https://www.slough.app/get-slough-app/): Pre-launch landing page where users can register to be notified when the app goes live on iOS and Android.
-- [Become a Tester](https://www.slough.app/become-a-tester/): Alpha tester signup. Testers get early access, a direct feedback channel to the team, and a contributor credit at launch.
-- [Launch Party / Get Notified](https://www.slough.app/launch-party/): Email signup form for launch-day notifications.
+- [Home](https://www.slough.app/): Overview of Slough App, its features, FAQs and download links.
+- [Get the App](https://www.slough.app/get-slough-app/): Download links for iOS and Android.
+- [About](https://www.slough.app/about/): Who is behind Slough App and why it was built.
 - [Contact](https://www.slough.app/contact/): Support and contact options. General support: support@slough.app.
 
 ## Policies
@@ -23,7 +22,7 @@ Slough App is made by locals, for locals. The site at https://www.slough.app is 
 
 - Audience: Residents of Slough, Berkshire, UK and surrounding areas.
 - Platforms: iOS (App Store) and Android (Google Play).
-- Status: Pre-launch, alpha testing.
+- Status: Live on the App Store and Google Play. Free to join and use.
 - Core features: Local feed, marketplace, jobs board, groups, messaging.
 
 ## Optional
