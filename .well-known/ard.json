@@ -1,0 +1,22 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Slough App",
+    "documentationUrl": "https://www.slough.app/llms.txt",
+    "logoUrl": "https://www.slough.app/logo.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:slough.app:docs:llms",
+      "displayName": "Slough App site guide",
+      "type": "text/plain",
+      "url": "https://www.slough.app/llms.txt",
+      "description": "Plain-text guide to Slough App, the community app for Slough, UK: what the app does, where to download it for iPhone and Android, and links to the key pages and policies.",
+      "representativeQueries": [
+        "What is Slough App?",
+        "Where can I download Slough App for iPhone or Android?",
+        "How do I contact Slough App support?"
+      ]
+    }
+  ]
+}
