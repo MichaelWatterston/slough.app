@@ -19,6 +19,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.slough.app/guides/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.slough.app/guides/christmas-in-slough/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.slough.app/guides/whats-on-in-slough/</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>

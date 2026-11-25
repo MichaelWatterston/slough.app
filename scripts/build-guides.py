@@ -6,7 +6,7 @@ wrapped in the shared page layout. Run from anywhere:
 
     python3 scripts/build-guides.py
 
-It writes guides/<slug>/index.html for each guide. To add a guide, add an entry to
+It writes guides/<slug>/index.html for each guide, plus the guides/index.html hub. To add a guide, add an entry to
 GUIDES, run this script, then add the URL to sitemap.xml and llms.txt.
 Facts come from slough.gov.uk; re-check them and bump UPDATED when you rebuild.
 """
@@ -41,10 +41,10 @@ LAYOUT = """<!DOCTYPE html>
   <meta property="og:type" content="article" />
   <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="{{URL}}">
-  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="stylesheet" href="../../assets/css/shared.min.css?v=2">
-  <link rel="stylesheet" href="../../assets/css/site.min.css">
-  <link rel="stylesheet" href="../../assets/css/guides.min.css">
+  <link rel="icon" type="image/x-icon" href="{{REL}}favicon.ico">
+  <link rel="stylesheet" href="{{REL}}assets/css/shared.min.css?v=2">
+  <link rel="stylesheet" href="{{REL}}assets/css/site.min.css">
+  <link rel="stylesheet" href="{{REL}}assets/css/guides.min.css">
   <title>{{TITLE}}</title>
   <meta property="og:url" content="{{URL}}" />
   <meta property="og:site_name" content="Slough App" />
@@ -64,7 +64,7 @@ LAYOUT = """<!DOCTYPE html>
   <nav class="nav nd-nav">
     <div class="nav-inner">
       <a href="/" class="brand" aria-label="Slough App home">
-        <img src="../../assets/logo-64.webp" alt="" width="28" height="28">
+        <img src="{{REL}}assets/logo-64.webp" alt="" width="28" height="28">
         <span>Slough App</span>
       </a>
       <div class="nav-links">
@@ -84,7 +84,7 @@ LAYOUT = """<!DOCTYPE html>
   <main id="main" tabindex="-1">
   <article class="nd-section guide-section">
     <div class="nd-wrap">
-      <p class="guide-crumbs"><a href="/">Home</a> / Slough guides / {{CRUMB}}</p>
+      <p class="guide-crumbs">{{CRUMBS}}</p>
       <div class="nd-head guide-head">
         <h1>{{H1}}</h1>
         <p>{{LEDE}}</p>
@@ -105,12 +105,7 @@ LAYOUT = """<!DOCTYPE html>
 {{FAQS}}
         </div>
 
-        <h2>More Slough guides</h2>
-        <ul class="guide-more">
-{{MORE}}
-        </ul>
-
-        <h2>Sources</h2>
+{{MORE_BLOCK}}        <h2>Sources</h2>
         <p class="guide-sources">{{SOURCES}}</p>
       </div>
     </div>
@@ -138,7 +133,7 @@ LAYOUT = """<!DOCTYPE html>
           </a>
         </div>
         <div class="nd-qr" aria-label="Scan to download Slough App">
-          <img src="../../assets/qr-download.svg" alt="QR code linking to slough.app" width="160" height="160" loading="lazy">
+          <img src="{{REL}}assets/qr-download.svg" alt="QR code linking to slough.app" width="160" height="160" loading="lazy">
           <span>Scan to download</span>
         </div>
       </div>
@@ -151,7 +146,7 @@ LAYOUT = """<!DOCTYPE html>
     <div class="foot-inner">
       <div class="foot-top">
         <div class="foot-brand">
-          <img src="../../assets/logo-64.webp" alt="" width="28" height="28">
+          <img src="{{REL}}assets/logo-64.webp" alt="" width="28" height="28">
           <span>Slough App</span>
         </div>
         <p class="foot-tag">Made for our town.</p>
@@ -173,7 +168,7 @@ LAYOUT = """<!DOCTYPE html>
         <a href="/accessibility">Accessibility</a>
       </nav>
       <nav class="foot-guides" aria-label="Slough guides">
-        <span>Slough guides:</span>
+        <span><a href="/guides/">Slough guides</a>:</span>
         <a href="/guides/whats-on-in-slough/">What's on</a>
         <a href="/guides/slough-bin-collection-days/">Bin days</a>
         <a href="/guides/slough-school-term-dates/">School term dates</a>
@@ -182,7 +177,7 @@ LAYOUT = """<!DOCTYPE html>
     <p class="foot-bottom">&copy; 2026 Slough App. All rights reserved.</p>
   </footer>
 
-{{SCRIPT}}  <script src="../../assets/js/nav.js" defer></script>
+{{SCRIPT}}  <script src="{{REL}}assets/js/nav.js" defer></script>
 </body>
 </html>
 """
@@ -322,9 +317,9 @@ BINS_FACTS = [
     ("The wheelie bin was born in Slough",
      "Frank Rotherham Mouldings, a Slough plastics firm, is widely credited with making the first modern wheelie bin in March 1968. It was built to move waste around the factory floor. Councils only started handing them to households in the 1980s."),
     ("The Trading Estate started out as \"The Dump\"",
-     "Slough Trading Estate began as a First World War depot for repairing military vehicles. So many broken lorries piled up there that locals nicknamed it The Dump. It was sold in 1920 and turned into the business estate."),
+     "The site of Slough Trading Estate began in 1918 as a depot for repairing army vehicles, and was known locally as \"the dump\". It was sold in 1920 and grew into the trading estate over the years that followed."),
     ("The first Mars bar was made here",
-     "Forrest Mars set up in a rented factory on the Trading Estate, and the first Mars bars were made by hand in Slough in 1932. The wrapper goes in the grey bin."),
+     "The Mars bar was first made in Slough in 1932 by Forrest Mars, whose company had just moved onto the Trading Estate. The wrapper goes in the grey bin."),
 ]
 
 BINS_FAQS = [
@@ -419,13 +414,13 @@ EVENTS_BODY = """
 
 EVENTS_FACTS = [
     ("The world's biggest telescope stood in a Slough garden",
-     "William Herschel built a 40-foot telescope behind his house on Windsor Road. It was the largest in the world for 50 years, and with it he discovered two of Saturn's moons, Mimas and Enceladus, in 1789."),
-    ("A stuffed dog has watched platform 5 since 1896",
-     "Station Jim collected coins for railway widows and orphans in a tin strapped to his harness. When he died in 1896 he was preserved, and he is still at Slough station. He was restored and given a new cabinet in 2025."),
-    ("Thunderbirds was filmed on the Trading Estate",
-     "Gerry Anderson's puppet studios were on Slough Trading Estate in the 1960s. Thunderbirds, Stingray and Captain Scarlet were all filmed there."),
+     "William Herschel built a 40-foot telescope in his garden on Windsor Road. It was the largest telescope in the world for 50 years."),
+    ("A stuffed dog has watched platform 5 since the 1890s",
+     "Station Jim collected coins for the Great Western Railway Widows and Orphans Fund in a tin strapped to his harness. When he died in 1896 he was preserved, and he is still at Slough station. He was restored and returned in a new glass case in December 2025."),
+    ("Thunderbirds was made on the Trading Estate",
+     "Gerry Anderson's company AP Films, the makers of Thunderbirds, had its studios on Slough Trading Estate from the late 1950s."),
     ("The Office made Slough a TV landmark",
-     "The BBC comedy The Office, first shown in 2001, is set at the Slough branch of the fictional paper company Wernham Hogg."),
+     "The BBC comedy The Office, first shown in July 2001, is set at the Slough branch of the fictional paper company Wernham Hogg."),
 ]
 
 EVENTS_FAQS = [
@@ -559,14 +554,14 @@ SCHOOLS_BODY = """
 """
 
 SCHOOLS_FACTS = [
-    ("The first zebra crossing was painted in Slough",
-     "On 31 October 1951 the world's first zebra crossing was laid out in Slough, after trials by the Road Research Laboratory based in Langley. The road has since been pedestrianised, so the original stripes are gone."),
+    ("The first zebra crossing was in Slough",
+     "The first zebra crossing was introduced on Slough High Street on 31 October 1951. The High Street has since been largely pedestrianised, so the original stripes are gone."),
     ("Slough children sit one 11+ for four schools",
      "Herschel, Langley, Upton Court and St Bernard's Catholic grammar schools share a single entrance test, so a child applying to any of them only sits it once."),
-    ("A school named after a planet finder",
-     "Herschel Grammar School takes its name from William Herschel, the astronomer who discovered Uranus in 1781 and lived in Slough from 1786 until his death."),
-    ("Britain's first salaried woman scientist worked here",
-     "Caroline Herschel, William's sister, discovered several comets from Slough. In 1787 King George III began paying her a salary for her astronomy work, a first for a woman in Britain."),
+    ("A school with a planet finder's name",
+     "Herschel Grammar School shares its name with Slough's most famous resident. William Herschel discovered Uranus in 1781, moved to Slough in 1786 and died here."),
+    ("The first woman paid to be an astronomer lived here",
+     "Caroline Herschel, William's sister, discovered eight comets between 1786 and 1797. In 1787 King George III granted her a salary of £50 a year, making her the first woman to be paid for her work in astronomy."),
 ]
 
 SCHOOLS_FAQS = [
@@ -629,7 +624,192 @@ SCHOOLS_SCRIPT = """  <script>
   </script>
 """
 
+# --------------------------------------------------------------------------
+# 4. CHRISTMAS IN SLOUGH
+# --------------------------------------------------------------------------
+XMAS_BODY = """
+        <div class="guide-note">
+          <p><strong>The short version</strong></p>
+          <ul>
+            <li><strong>Trains:</strong> none from Slough on Christmas Day or Boxing Day, and none between Slough and London Paddington from Sunday 27 December to Sunday 3 January.</li>
+            <li><strong>Bins:</strong> collections due from Christmas Day onwards run late until mid January.</li>
+            <li><strong>Schools:</strong> council-calendar schools finish on Friday 18 December and go back on Monday 4 January.</li>
+            <li><strong>The tip:</strong> closed on Christmas Day, Boxing Day and New Year's Day, with a 1pm finish on Christmas Eve and New Year's Eve.</li>
+          </ul>
+        </div>
+
+        <h2 id="trains">Trains from Slough over Christmas 2026</h2>
+        <p>This is the one to plan around. Network Rail is rebuilding Dolphin Junction, the set of points near Slough, and the line into London Paddington is shut for more than a week. If you commute, are flying from Heathrow, or have family arriving by train, check these dates first.</p>
+        <div class="guide-table" tabindex="0" role="region" aria-label="Train services from Slough over Christmas 2026 and New Year 2027">
+          <table>
+            <caption>Slough station, 24 December 2026 to 4 January 2027</caption>
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">What is running</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Thursday 24 December</th><td>Trains finish early. GWR services end by 9.30pm.</td></tr>
+              <tr><th scope="row">Friday 25 December</th><td>No trains at all.</td></tr>
+              <tr><th scope="row">Saturday 26 December</th><td>No GWR or Elizabeth line trains.</td></tr>
+              <tr><th scope="row">Sunday 27 to Wednesday 30 December</th><td>No trains between Slough and Paddington. GWR runs an amended service between Slough and Reading. Replacement buses run from Slough to Ealing Broadway for the Underground. Heathrow Express is not running.</td></tr>
+              <tr><th scope="row">Thursday 31 December and Friday 1 January</th><td>Still no trains between Slough and Paddington. The Elizabeth line runs between Heathrow and central London, with replacement buses between Slough and Hayes &amp; Harlington.</td></tr>
+              <tr><th scope="row">Saturday 2 and Sunday 3 January</th><td>Still no trains between Slough and Paddington. Replacement buses run, but the published details differ between pages, so check a journey planner on the day.</td></tr>
+              <tr><th scope="row">Monday 4 January</th><td>Normal service is expected, apart from a few very early trains.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>The Windsor branch still runs</h3>
+        <p>Trains between Slough and Windsor &amp; Eton Central run normally from 27 December to 3 January. They do not run on Christmas Day or Boxing Day.</p>
+        <h3>A way into London that avoids the buses</h3>
+        <p>GWR says its tickets are accepted on South Western Railway between Windsor &amp; Eton Riverside and London Waterloo during the closure. So you can take the branch line to Windsor &amp; Eton Central, walk across town to Windsor &amp; Eton Riverside and catch a Waterloo train. Check times before you set off, and confirm your ticket is valid on the <a href="https://www.nationalrail.co.uk/travel-information/christmas/">National Rail Christmas page</a>.</p>
+        <h3>Getting to Heathrow</h3>
+        <p>From 27 to 30 December the Piccadilly line is the only train between central London and Heathrow. From Slough, local buses to the airport are likely to be the simpler option on those days.</p>
+
+        <h2 id="bank-holidays">Bank holidays this Christmas</h2>
+        <ul>
+          <li><strong>Christmas Day:</strong> Friday 25 December 2026.</li>
+          <li><strong>Boxing Day:</strong> Saturday 26 December, with the bank holiday moved to <strong>Monday 28 December</strong>.</li>
+          <li><strong>New Year's Day:</strong> Friday 1 January 2027.</li>
+        </ul>
+
+        <h2 id="bins">Christmas bin collections in Slough</h2>
+        <p>Collections due from Monday 21 to Thursday 24 December are unchanged. After that everything runs late, starting like this:</p>
+        <div class="guide-table" tabindex="0" role="region" aria-label="First week of revised Christmas bin collections">
+          <table>
+            <caption>Revised bin days, Christmas week</caption>
+            <thead>
+              <tr><th scope="col">Normal collection day</th><th scope="col">Revised collection day</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Friday 25 December</td><td>Tuesday 29 December</td></tr>
+              <tr><td>Monday 28 December</td><td>Wednesday 30 December</td></tr>
+              <tr><td>Tuesday 29 December</td><td>Thursday 31 December</td></tr>
+              <tr><td>Wednesday 30 December</td><td>Saturday 2 January</td></tr>
+              <tr><td>Thursday 31 December</td><td>Monday 4 January</td></tr>
+              <tr><td>Friday 1 January</td><td>Tuesday 5 January</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The knock-on changes carry on until Saturday 16 January. The <a href="/guides/slough-bin-collection-days/#christmas">full table is in our bin days guide</a>. Garden waste is not collected over the two-week Christmas period, and the council has a <a href="https://www.slough.gov.uk/bins-waste-recycling/christmas-recycling">Christmas recycling page</a> for trees, wrapping and cards.</p>
+
+        <h2 id="tip">Chalvey tip Christmas opening hours</h2>
+        <ul>
+          <li><strong>Christmas Eve, Thursday 24 December:</strong> 9am to 1pm.</li>
+          <li><strong>Christmas Day and Boxing Day:</strong> closed.</li>
+          <li><strong>Sunday 27 to Wednesday 30 December:</strong> 9am to 5pm, the normal winter hours.</li>
+          <li><strong>New Year's Eve, Thursday 31 December:</strong> 9am to 1pm.</li>
+          <li><strong>New Year's Day:</strong> closed.</li>
+        </ul>
+        <p>Last entry is 15 minutes before closing. The days after Christmas are busy, so go early.</p>
+
+        <h2 id="schools">School Christmas holidays in Slough</h2>
+        <p>For community and voluntary controlled schools, the last day of term is <strong>Friday 18 December 2026</strong> and pupils return on <strong>Monday 4 January 2027</strong>. Academies, free schools and voluntary aided schools can differ by a day or two, and some schools start January with an INSET day. Full dates are in our <a href="/guides/slough-school-term-dates/">school term dates guide</a>.</p>
+
+        <h2 id="whats-on">Christmas things to do in and around Slough</h2>
+        <ul>
+          <li><strong>Windsor Great Park Illuminated.</strong> A 2.2km light trail running from 13 November 2026 to 3 January 2027, with timed tickets and entry from the Savill Garden car park. It is a short drive from Slough.</li>
+          <li><strong>Windsor at Christmas.</strong> Six minutes on the branch line, with the castle, shops and lights. The branch runs every day except Christmas Day and Boxing Day.</li>
+          <li><strong>Ice skating in Slough.</strong> Slough Ice Arena is an indoor rink, so there is skating whatever the weather. Check its timetable for sessions over the holidays.</li>
+          <li><strong>Slough town centre.</strong> The Christmas lights switch-on is run by local organisers and has been held on a November Saturday in recent years. No 2026 date was published on their websites when we checked.</li>
+          <li><strong>School fairs, carol services and community meals.</strong> These are the events that rarely make it onto ticket sites. Residents post them in the Slough App feed and groups.</li>
+        </ul>
+        <p>For venues and year-round ideas, see <a href="/guides/whats-on-in-slough/">what's on in Slough</a>.</p>
+
+        <h2 id="after">After Christmas: pass it on</h2>
+        <p>Duplicate presents, outgrown bikes and the old TV all have a taker somewhere in Slough. List them on the Slough App marketplace, for sale or for free, and they are collected by someone local. It beats paying for a bulky waste collection in January.</p>
+
+        <h2 id="company">If Christmas is a hard time</h2>
+        <p>Not everyone has a full house. Community groups and places of worship across Slough put on shared meals and get-togethers over the holidays, and neighbours post them in the app. If you are struggling, Samaritans are free to call on 116 123 at any time, including Christmas Day.</p>
+"""
+
+XMAS_FACTS = [
+    ("A family once sang inside a telescope in Slough",
+     "William Herschel's 40-foot telescope was taken down at the end of 1839. To mark the occasion, the Herschel family gathered inside the giant tube and sang a song."),
+    ("A New Year's Day murderer was caught by telegraph from Slough",
+     "On 1 January 1845 John Tawell fled a murder at Salt Hill by boarding a train at Slough for Paddington. A telegraph message got there first, and he was arrested the next day. It is believed to be the first time the telegraph helped catch a murderer. The machine had no letter Q, so the message described him as dressed like a \"kwaker\"."),
+    ("England's first known Christmas tree stood in Windsor",
+     "Queen Charlotte set up the first known English Christmas tree in December 1800, at Queen's Lodge in Windsor, for a children's party. Windsor is the next town south of Slough."),
+    ("Slough made the nation's bedtime drink",
+     "The Horlicks factory in Slough was completed in 1908 at a cost of £28,000. The building has since been restored as homes in the Horlicks Quarter."),
+]
+
+XMAS_FAQS = [
+    ("Are trains running from Slough on Christmas Day and Boxing Day 2026?",
+     "No. There are no trains on Christmas Day, Friday 25 December 2026, and no GWR or Elizabeth line trains on Boxing Day, Saturday 26 December 2026."),
+    ("Are trains running between Slough and London Paddington after Christmas 2026?",
+     "No. Because of engineering work at Dolphin Junction, no trains run between Slough and London Paddington from Sunday 27 December 2026 to Sunday 3 January 2027. Replacement buses run from Slough, and GWR runs an amended service between Slough and Reading. Normal service is expected from Monday 4 January 2027."),
+    ("Is the Slough to Windsor train running over Christmas 2026?",
+     "Yes, except on Christmas Day and Boxing Day. Trains between Slough and Windsor & Eton Central run normally from 27 December 2026 to 3 January 2027."),
+    ("When are bins collected in Slough over Christmas 2026?",
+     "Collections from Monday 21 to Thursday 24 December are unchanged. Christmas Day collections move to Tuesday 29 December, Monday 28 December moves to Wednesday 30 December, and collections stay later than normal until Saturday 16 January 2027."),
+    ("Is Chalvey tip open over Christmas?",
+     "Chalvey Household Waste Recycling Centre is closed on Christmas Day, Boxing Day and New Year's Day. It opens 9am to 1pm on Christmas Eve and New Year's Eve, and 9am to 5pm on other days."),
+    ("When do Slough schools break up for Christmas 2026?",
+     "Community and voluntary controlled schools finish on Friday 18 December 2026 and return on Monday 4 January 2027. Academies, free schools and voluntary aided schools can set different dates."),
+]
+
+# --------------------------------------------------------------------------
+# GUIDES INDEX (/guides/)
+# --------------------------------------------------------------------------
+INDEX_FACTS = [
+    ("Slough used to be in Buckinghamshire",
+     "The town only became part of Berkshire in 1974, in that year's local government reorganisation."),
+    ("The name is more than 800 years old",
+     "Slough is first recorded in the 1190s, written as \"Slo\"."),
+    ("It is home to a record-breaking business park",
+     "Slough Trading Estate is described as the largest industrial estate in single private ownership in Europe."),
+]
+
+INDEX_FAQS = [
+    ("Who writes the Slough guides?",
+     "The guides are written by the Slough App team, using information published by Slough Borough Council, National Rail and local venues. Each guide shows the date it was last checked."),
+    ("Are these official council pages?",
+     "No. Slough App is an independent community app and is not run by Slough Borough Council. Each guide links to the official source, and the official source is right if the two ever differ."),
+    ("Can I suggest a guide?",
+     "Yes. Tell us what you would like covered through the Help and Contact page, or post it in the Slough App."),
+]
+
+INDEX = {
+    "index": True,
+    "slug": "",
+    "crumb": "Slough guides",
+    "title": "Slough Guides: Bin Days, School Term Dates and What's On | Slough App",
+    "og_title": "Slough guides: practical local information for our town",
+    "desc": "Practical guides for people who live in Slough: bin collection days, school term dates, what's on, and Christmas trains, bins and opening hours.",
+    "h1": "Slough guides",
+    "lede": "Plain answers to the things people in Slough look up most, checked against official sources and kept in one place.",
+    "facts_heading": "Slough fun facts: the basics",
+    "facts_intro": "Three to start with. Every guide has its own set.",
+    "facts": INDEX_FACTS,
+    "faq_heading": "About these guides",
+    "faqs": INDEX_FAQS,
+    "cta_heading": "The rest is in the app.",
+    "cta_text": "What your neighbours are posting, selling and organising right now. Slough App is free on iOS and Android.",
+    "sources": 'Guides draw on <a href="https://www.slough.gov.uk/">Slough Borough Council</a>, <a href="https://www.nationalrail.co.uk/">National Rail</a> and local venues. Slough App is not run by the council.',
+    "script": "",
+}
+
 GUIDES = [
+    {
+        "slug": "christmas-in-slough",
+        "crumb": "Christmas in Slough",
+        "title": "Christmas in Slough 2026: Trains, Bin Days, Tip Hours and What's On | Slough App",
+        "og_title": "Christmas in Slough 2026: trains, bins, tip hours and what's on",
+        "desc": "Christmas 2026 in Slough: no trains to Paddington from 27 December to 3 January, revised bin days, Chalvey tip hours, school holiday dates and things to do.",
+        "h1": "Christmas in Slough 2026",
+        "lede": "The rail closure, the bin changes, the tip hours and the school dates, plus a few things to do, so nothing catches you out between now and January.",
+        "body": XMAS_BODY,
+        "facts_heading": "Slough fun facts: festive edition",
+        "facts_intro": "Four for the Christmas dinner table.",
+        "facts": XMAS_FACTS,
+        "faq_heading": "Christmas in Slough: common questions",
+        "faqs": XMAS_FAQS,
+        "more_title": "Christmas in Slough 2026",
+        "more_blurb": "Rail closure dates, revised bin days, tip hours and things to do.",
+        "cta_heading": "Know what's happening over Christmas.",
+        "cta_text": "Fairs, carol services, shared meals and last-minute bargains, posted by people in Slough. Free on iOS and Android.",
+        "sources": 'Rail information is from <a href="https://www.nationalrail.co.uk/travel-information/christmas/">National Rail\'s Christmas and New Year pages</a>. Bin, tip and school dates are from <a href="https://www.slough.gov.uk/">Slough Borough Council</a>. Windsor Great Park Illuminated dates are from <a href="https://www.windsorgreatpark.co.uk/all-events/windsor-great-park-illuminated/">Windsor Great Park</a>. All were checked on the date above and can change at short notice, so confirm before you travel.',
+        "script": "",
+    },
     {
         "slug": "slough-bin-collection-days",
         "crumb": "Bin collection days",
@@ -700,8 +880,17 @@ def esc(text):
     return html.escape(text, quote=True)
 
 
+def cards(guides):
+    return "\n".join(
+        f"          <li><a href=\"/{FOLDER}/{g['slug']}/\">{esc(g['more_title'])}<span>{esc(g['more_blurb'])}</span></a></li>"
+        for g in guides
+    )
+
+
 def build(guide):
-    url = f"{SITE}/{FOLDER}/{guide['slug']}/"
+    is_index = guide.get("index", False)
+    url = f"{SITE}/{FOLDER}/" if is_index else f"{SITE}/{FOLDER}/{guide['slug']}/"
+    rel = "../" if is_index else "../../"
     facts = "\n".join(
         f"          <li><strong>{esc(t)}</strong>{esc(d)}</li>" for t, d in guide["facts"]
     )
@@ -712,14 +901,58 @@ def build(guide):
         "          </details>"
         for q, a in guide["faqs"]
     )
-    more = "\n".join(
-        f"          <li><a href=\"/{FOLDER}/{g['slug']}/\">{esc(g['more_title'])}<span>{esc(g['more_blurb'])}</span></a></li>"
-        for g in GUIDES
-        if g is not guide
-    )
-    jsonld = {
-        "@context": "https://schema.org",
-        "@graph": [
+    faq_ld = {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in guide["faqs"]
+        ],
+    }
+    home_ld = {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"}
+    hub_ld = {"@type": "ListItem", "position": 2, "name": "Slough guides", "item": f"{SITE}/{FOLDER}/"}
+    if is_index:
+        crumbs = '<a href="/">Home</a> / Slough guides'
+        body = (
+            '        <h2 id="all-guides">All guides</h2>\n'
+            '        <ul class="guide-more">\n' + cards(GUIDES) + "\n        </ul>"
+        )
+        more_block = ""
+        graph = [
+            {
+                "@type": "CollectionPage",
+                "@id": url + "#page",
+                "name": guide["og_title"],
+                "description": guide["desc"],
+                "inLanguage": "en-GB",
+                "dateModified": UPDATED_ISO,
+                "url": url,
+                "publisher": {"@id": SITE + "/#organization"},
+                "mainEntity": {
+                    "@type": "ItemList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": n,
+                            "name": g["more_title"],
+                            "url": f"{SITE}/{FOLDER}/{g['slug']}/",
+                        }
+                        for n, g in enumerate(GUIDES, 1)
+                    ],
+                },
+            },
+            {"@type": "BreadcrumbList", "itemListElement": [home_ld, hub_ld]},
+            faq_ld,
+        ]
+    else:
+        crumbs = f'<a href="/">Home</a> / <a href="/{FOLDER}/">Slough guides</a> / {esc(guide["crumb"])}'
+        body = guide["body"].strip("\n")
+        more_block = (
+            "        <h2>More Slough guides</h2>\n"
+            '        <ul class="guide-more">\n'
+            + cards([g for g in GUIDES if g is not guide])
+            + "\n        </ul>\n\n"
+        )
+        graph = [
             {
                 "@type": "Article",
                 "@id": url + "#article",
@@ -737,40 +970,32 @@ def build(guide):
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-                    {"@type": "ListItem", "position": 2, "name": guide["crumb"], "item": url},
+                    home_ld,
+                    hub_ld,
+                    {"@type": "ListItem", "position": 3, "name": guide["crumb"], "item": url},
                 ],
             },
-            {
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": q,
-                        "acceptedAnswer": {"@type": "Answer", "text": a},
-                    }
-                    for q, a in guide["faqs"]
-                ],
-            },
-        ],
-    }
+            faq_ld,
+        ]
+    jsonld = {"@context": "https://schema.org", "@graph": graph}
     fields = {
         "TITLE": esc(guide["title"]),
         "OG_TITLE": esc(guide["og_title"]),
         "DESC": esc(guide["desc"]),
         "URL": url,
-        "CRUMB": esc(guide["crumb"]),
+        "REL": rel,
+        "CRUMBS": crumbs,
         "H1": esc(guide["h1"]),
         "LEDE": esc(guide["lede"]),
         "UPDATED_ISO": UPDATED_ISO,
         "UPDATED_TEXT": UPDATED_TEXT,
-        "BODY": guide["body"].strip("\n"),
+        "BODY": body,
         "FACTS_HEADING": esc(guide["facts_heading"]),
         "FACTS_INTRO": esc(guide["facts_intro"]),
         "FACTS": facts,
         "FAQ_HEADING": esc(guide["faq_heading"]),
         "FAQS": faqs,
-        "MORE": more,
+        "MORE_BLOCK": more_block,
         "SOURCES": guide["sources"],
         "CTA_HEADING": esc(guide["cta_heading"]),
         "CTA_TEXT": esc(guide["cta_text"]),
@@ -780,13 +1005,14 @@ def build(guide):
     page = LAYOUT
     for key, value in fields.items():
         page = page.replace("{{" + key + "}}", value)
+    assert "{{" not in page, "unfilled placeholder in " + (guide["slug"] or "index")
     out_dir = os.path.join(ROOT, FOLDER, guide["slug"])
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(page)
-    print("built", FOLDER + "/" + guide["slug"] + "/index.html")
+    print("built", os.path.join(FOLDER, guide["slug"], "index.html"))
 
 
 if __name__ == "__main__":
-    for g in GUIDES:
+    for g in GUIDES + [INDEX]:
         build(g)
